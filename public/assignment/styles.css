@@ -14,12 +14,12 @@ label {
     margin-top: 10px;
 }
 
-.glyphicon {
+.navbar .glyphicon {
     color: white;
 }
 
-.glyphicon-ok {
-    color: white;
+.glyphicon-cog {
+    color: #337ab7;
 }
 
 body {
