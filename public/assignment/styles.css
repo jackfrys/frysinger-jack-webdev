@@ -14,7 +14,7 @@ label {
     margin-top: 10px;
 }
 
-.navbar .glyphicon {
+.jcf-navbar-text .glyphicon {
     color: white;
 }
 
@@ -38,6 +38,10 @@ body {
     background-color: #337ab7;
 }
 
-.jcf-navbar-text {
-    color: white;
+.jcf-navbar-default .glyphicon {
+    color: black;
+}
+
+.jcf-footer-default .glyphicon {
+    color: #337ab7;
 }
