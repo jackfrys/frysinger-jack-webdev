@@ -1,0 +1,35 @@
+input {
+    margin-bottom: 5px;
+}
+
+.title {
+    color: white;
+}
+
+label {
+    margin-bottom: 3px;
+}
+
+.content {
+    margin-top: 10px;
+}
+
+.glyphicon {
+    color: white;
+}
+
+body {
+    padding-top: 70px;
+}
+
+.list-group-item {
+    border-color: transparent;
+}
+
+#description {
+    margin-bottom: 10px;
+}
+
+/*.glyphicon .glyphicon-ok {*/
+    /*color: black;*/
+/*}*/
