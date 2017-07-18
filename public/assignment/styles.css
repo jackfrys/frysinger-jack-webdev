@@ -45,3 +45,7 @@ body {
 .jcf-footer-default .glyphicon {
     color: #337ab7;
 }
+
+.jcf-widget-list li {
+    color: #337ab7;
+}
