@@ -18,6 +18,10 @@ label {
     color: white;
 }
 
+.glyphicon-ok {
+    color: white;
+}
+
 body {
     padding-top: 70px;
 }
@@ -30,6 +34,10 @@ body {
     margin-bottom: 10px;
 }
 
-/*.glyphicon .glyphicon-ok {*/
-    /*color: black;*/
-/*}*/
+.site-header {
+    background-color: #337ab7;
+}
+
+.jcf-navbar-text {
+    color: white;
+}
