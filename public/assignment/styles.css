@@ -70,3 +70,9 @@ body {
 .jcf-navbar-text {
     color: white;
 }
+
+.border-col {
+    border-right-color: #337ab7;
+    border-right: solid;
+    height: 100%;
+}
