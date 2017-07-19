@@ -88,3 +88,7 @@ body {
     padding: 5px;
     border-bottom-left-radius: 5px;
 }
+
+.jcf-youtube {
+    z-index: -1;
+}
