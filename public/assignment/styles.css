@@ -26,6 +26,10 @@ label {
     color: white;
 }
 
+.jcf-widget-tools .glyphicon {
+    color: black;
+}
+
 .site-header .navbar-brand {
     color: white;
 }
