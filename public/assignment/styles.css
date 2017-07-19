@@ -22,6 +22,14 @@ label {
     color: #337ab7;
 }
 
+.site-header .glyphicon {
+    color: white;
+}
+
+.site-header .navbar-brand {
+    color: white;
+}
+
 body {
     padding-top: 70px;
 }
