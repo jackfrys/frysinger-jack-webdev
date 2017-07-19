@@ -66,3 +66,7 @@ img {
 body {
     padding-bottom: 40px;
 }
+
+.jcf-navbar-text {
+    color: white;
+}
