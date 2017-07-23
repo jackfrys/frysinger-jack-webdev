@@ -28,7 +28,7 @@
         }
         
         function findUserById(userId) {
-            for (user in users) {
+            for (var user in users) {
                 if (user._id == userId) {
                     return user;
                 }
@@ -36,7 +36,7 @@
         }
 
         function findUserByUsername(username) {
-            for (user in users) {
+            for (var user in users) {
                 if (user.username == username) {
                     return user;
                 }
@@ -44,7 +44,7 @@
         }
 
         function findUserByCredentials(username, password) {
-            for (user in users) {
+            for (var user in users) {
                 if (user.username == username && user.password == password) {
                     return user;
                 }
@@ -54,7 +54,7 @@
         function updateUser(userId, user) {
             var newUsers = [];
 
-            for (u in users) {
+            for (var u in users) {
                 if (user._id == userId) {
                     newUsers.push(user);
                 } else {
@@ -68,7 +68,7 @@
         function deleteUser(userId) {
             var newUsers = [];
 
-            for (u in users) {
+            for (var u in users) {
                 if (user._id != userId) {
                     newUsers.push(u);
                 }
