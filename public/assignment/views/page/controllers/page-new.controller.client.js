@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("NewPageController", NewPageController);
 
-    function NewPageController() {
-
+    function NewPageController($scope) {
+        var vm = this;
     }
 })();

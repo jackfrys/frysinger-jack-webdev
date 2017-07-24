@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("LoginController", LoginController);
     
-    function LoginController() {
-        
+    function LoginController($scope) {
+        var vm = this;
     }
 })();

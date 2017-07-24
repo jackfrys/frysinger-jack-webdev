@@ -1,9 +1,9 @@
 (function () {
     angular
         .module("WebAppMaker")
-        .controller("WebsiteEditController", WebsiteEditController);
+        .controller("EditWebsiteController", EditWebsiteController);
 
-    function WebsiteEditController() {
-
+    function EditWebsiteController($scope) {
+        ver vm = this;
     }
 })();

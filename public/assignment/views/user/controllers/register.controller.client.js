@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController() {
-
+    function RegisterController($scope) {
+        var vm = this;
     }
 })();

@@ -20,13 +20,13 @@
 <div class="container-fluid content">
     <form>
         <label for="username">Username</label>
-        <input class="form-control" type="text" placeholder="username" id="username"/>
+        <input ng-model="model.user.username" class="form-control" type="text" placeholder="username" id="username"/>
         <label for="email">Email</label>
-        <input class="form-control" type="email" placeholder="email" id="email"/>
+        <input ng-model="model.user.email" class="form-control" type="email" placeholder="email" id="email"/>
         <label for="first-name">First Name</label>
-        <input class="form-control" type="text" placeholder="first name" id="first-name"/>
+        <input ng-model="model.user.firstName" class="form-control" type="text" placeholder="first name" id="first-name"/>
         <label for="last-name">Last Name</label>
-        <input class="form-control" type="text" placeholder="last name" id="last-name"/>
+        <input ng-model="model.user.lastName" class="form-control" type="text" placeholder="last name" id="last-name"/>
     </form>
     <a href="#!/user/:uid/website" class="btn btn-primary btn-lg btn-block">Websites</a>
     <a href="#!/login" class="btn btn-primary btn-lg btn-block btn-danger">Logout</a>
