@@ -2,13 +2,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-10 pull-left">
-                <a href="#!/user/{{model.userId}}/website/:wid/page/:pid/widget" class="navbar-brand">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-brand">
                     <span class="glyphicon glyphicon-menu-left"></span> Widget Edit
                 </a>
             </div>
             <div class="col-xs-2 pull-right">
                 <div class="pull-right navbar-brand">
-                    <a href="#!/user/{{model.userId}}/website/:wid/page/:pid/widget">
+                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
                         <span class="glyphicon glyphicon-ok"></span>
                     </a>
                 </div>
@@ -31,7 +31,7 @@
         <input class="form-control" type="file" placeholder="upload" name="upload" id="upload"/>
     </form>
     <a href="#" class="btn btn-primary btn-lg btn-block">Upload Image</a>
-    <a href="#!/user/{{model.userId}}/website/:wid/page/:pid/widget" class="btn btn-primary btn-lg btn-block btn-danger">Delete</a>
+    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="btn btn-primary btn-lg btn-block btn-danger">Delete</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom jcf-footer-default">

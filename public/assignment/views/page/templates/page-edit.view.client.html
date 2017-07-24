@@ -2,13 +2,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-10 pull-left">
-                <a href="#!/user/{{model.userId}}/website/:wid/page" class="navbar-brand">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-brand">
                     <span class="glyphicon glyphicon-menu-left"></span> Edit Page
                 </a>
             </div>
             <div class="col-xs-2 pull-right">
                 <div class="pull-right navbar-brand">
-                    <a href="#!/user/{{model.userId}}/website/:wid/page">
+                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
                         <span class="glyphicon glyphicon-ok"></span>
                     </a>
                 </div>
@@ -24,7 +24,7 @@
         <label ng-model="model.page.title" for="pageTitle">Title</label>
         <input class="form-control" type="text" placeholder="Page Title" name="pageTitle" id="pageTitle"/>
     </form>
-    <a href="#!/user/{{model.userId}}/website/:wid/page" class="btn btn-primary btn-lg btn-block btn-danger">Delete</a>
+    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" class="btn btn-primary btn-lg btn-block btn-danger">Delete</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom jcf-footer-default">

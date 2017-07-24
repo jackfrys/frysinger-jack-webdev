@@ -2,13 +2,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-10 pull-left">
-                <a href="#!/user/{{model.userId}}/website/:wid/page/:pid/widget" class="navbar-brand">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-brand">
                     <span class="glyphicon glyphicon-menu-left"></span> Widget Edit
                 </a>
             </div>
             <div class="col-xs-2 pull-right">
                 <div class="pull-right navbar-brand">
-                    <a href="#!/user/{{model.userId}}/website/:wid/page/:pid/widget">
+                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
                         <span class="glyphicon glyphicon-ok"></span>
                     </a>
                 </div>
@@ -23,12 +23,12 @@
         <input class="form-control" type="text" placeholder="Page Name" name="pageName" id="pageName"/>
         <label for="text">Text</label>
         <input class="form-control" type="text" placeholder="Text" name="text" id="text"/>
-        <label for="url">URl</label>
+        <label for="url">URL</label>
         <input class="form-control" type="url" placeholder="URL" name="url" id="url"/>
         <label for="width">Width</label>
         <input class="form-control" type="number" placeholder="Width" name="width" id="width"/>
     </form>
-    <a href="#!/user/{{model.userId}}/website/:wid/page/:pid/widget" class="btn btn-primary btn-lg btn-block btn-danger">Delete</a>
+    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="btn btn-primary btn-lg btn-block btn-danger">Delete</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom jcf-footer-default">
