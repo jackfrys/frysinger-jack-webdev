@@ -29,46 +29,17 @@
 
     <div class="row">
         <div class="col-xs-3 visible-lg border-col">
-
             <ul class="list-group">
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10">Wikipedia</div>
-                        <div class="col-xs-2">
-                            <a href="#!/user/:uid/website/:wid"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+                <div ng-repeat="website in websites">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">{{website.name}}</div>
+                            <div class="col-xs-2">
+                                <a href="#!/user/:uid/website/:wid"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+                            </div>
                         </div>
-                    </div>
-
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10">
-                            Facebook
-                        </div>
-                        <div class="col-xs-2">
-                            <a href="#!/user/:uid/website/:wid"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10">Twitter
-                        </div>
-                        <div class="col-xs-2">
-                            <a href="#!/user/:uid/website/:wid"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-                        </div>
-                    </div>
-
-
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10">Amazon</div>
-                        <div class="col-xs-2">
-                            <a href="#!/user/:uid/website/:wid"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                </div>
             </ul>
 
         </div>

@@ -2,13 +2,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-10 pull-left">
-                <a href="#!/user/:uid" class="navbar-brand">
+                <a href="#!/user/{{model.userId}}" class="navbar-brand">
                     <div class="jcf-navbar-text"><span class="glyphicon glyphicon-menu-left"></span> Websites</div>
                 </a>
             </div>
             <div class="col-xs-2 pull-right">
                 <div class="pull-right navbar-text">
-                    <a href="website-new.view.client.html">
+                    <a href="#!/user/{{model.userId}}/website/new">
                         <span class="glyphicon glyphicon-plus"></span>
                     </a>
                 </div>
@@ -23,10 +23,10 @@
             <li class="list-group-item">
                 <div class="row">
                     <div class="col-xs-10">
-                        <a href="#!/user/:uid/website/:wid/page">{{website.name}}</a>
+                        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a>
                     </div>
                     <div class="col-xs-2">
-                        <a href="#!/user/:uid/website/:wid"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+                        <a href="#!/user/{{model.userId}}/website/{{website._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
                     </div>
                 </div>
             </li>
