@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($scope) {
+    function ProfileController($routeParams, UserService) {
         var vm = this;
         vm.userId = $routeParams["userId"];
         function init() {

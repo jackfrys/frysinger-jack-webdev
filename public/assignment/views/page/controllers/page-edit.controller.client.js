@@ -3,9 +3,9 @@
         .module("WebAppMaker")
         .controller("EditPageController", EditPageController);
 
-    function EditPageController($scope) {
+    function EditPageController($routeParams, PageService) {
         var vm = this;
-        vm.pageId = $routeParameters["pageId"];
+        vm.pageId = $routeParams["pageId"];
         function init() {
             vm.page = PageService.findPageById(pageId);
         }
