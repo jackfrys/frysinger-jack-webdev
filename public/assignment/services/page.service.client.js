@@ -30,8 +30,8 @@
             var ps = [];
 
             for (var p in pages) {
-                if (p.websiteId == websiteId) {
-                    ps.push(w);
+                if (pages[p]._id == websiteId) {
+                    ps.push(pages[p]);
                 }
             }
 
@@ -40,8 +40,8 @@
 
         function findPageById(pageId) {
             for (var p in pages) {
-                if (p._id == pageId) {
-                    return p;
+                if (pages[p]._id == pageId) {
+                    return pages[p];
                 }
             }
         }
@@ -55,8 +55,8 @@
             var ps = [];
 
             for (var p in pages) {
-                if (p._id != pages) {
-                    ps.push(p);
+                if (pages[p]._id != pages) {
+                    ps.push(pages[p]);
                 }
             }
 
