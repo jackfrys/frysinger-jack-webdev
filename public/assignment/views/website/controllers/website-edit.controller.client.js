@@ -4,6 +4,11 @@
         .controller("EditWebsiteController", EditWebsiteController);
 
     function EditWebsiteController($scope) {
-        ver vm = this;
+        var vm = this;
+        vm.websiteId = $routeParameters["websiteId"];
+        function init() {
+            vm.website = WebsiteService.findWebsiteById(websiteId);
+        }
+        init();
     }
 })();
