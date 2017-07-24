@@ -5,9 +5,9 @@
 
     function ProfileController($routeParams, UserService) {
         var vm = this;
-        vm.userId = $routeParams["userId"];
+        vm.userId = $routeParams["uid"];
         function init() {
-            vm.userId = UserService.findUserById(userId);
+            vm.user = UserService.findUserById(vm.userId);
         }
         init();
     }
