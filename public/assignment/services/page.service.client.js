@@ -60,7 +60,7 @@
                 }
             }
 
-            return ps;
+            pages = ps;
         }
 
     }
