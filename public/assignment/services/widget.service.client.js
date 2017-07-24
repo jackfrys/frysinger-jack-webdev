@@ -36,8 +36,8 @@
             var wds = [];
 
             for (var wd in widgets) {
-                if (wd.pageId == pageId) {
-                    wds.push(w);
+                if (widgets[wd].pageId == pageId) {
+                    wds.push(widgets[wd]);
                 }
             }
 
@@ -46,8 +46,8 @@
 
         function findWidgetById(widgetId) {
             for (var wd in widgets) {
-                if (wd._id == widgetId) {
-                    return wd;
+                if (widgets[wd]._id == widgetId) {
+                    return widgets[wd];
                 }
             }
         }
@@ -61,8 +61,8 @@
             var wds = [];
 
             for (var wd in widgets) {
-                if (wd._id != widgets) {
-                    wds.push(wd);
+                if (widgets[wd]._id != widgets) {
+                    wds.push(widgets[wd]);
                 }
             }
 

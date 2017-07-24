@@ -34,8 +34,8 @@
             var ws = [];
 
             for (var w in websites) {
-                if (w.developerId == userId) {
-                    ws.push(w);
+                if (websites[w].developerId == userId) {
+                    ws.push(websites[w]);
                 }
             }
 
@@ -44,8 +44,8 @@
 
         function findWebsiteById(websiteId) {
             for (var w in websites) {
-                if (w._id == websiteId) {
-                    return w;
+                if (websites[w]._id == websiteId) {
+                    return websites[w];
                 }
             }
         }
@@ -59,8 +59,8 @@
             var ws = [];
 
             for (var w in websites) {
-                if (w._id != websiteId) {
-                    ws.push(w);
+                if (websites[w]._id != websiteId) {
+                    ws.push(websites[w]);
                 }
             }
 
