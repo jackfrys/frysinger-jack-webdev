@@ -64,7 +64,7 @@
                 }
             }
 
-            return ws;
+            websites = ws;
         }
 
     }

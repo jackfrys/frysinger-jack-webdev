@@ -2,13 +2,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-10 pull-left">
-                <a href="#!/user/:uid/website/:wid/page" class="navbar-brand">
+                <a href="#!/user/{{model.userId}}/website/:wid/page" class="navbar-brand">
                     <span class="glyphicon glyphicon-menu-left"></span> New Page
                 </a>
             </div>
             <div class="col-xs-2 pull-right">
                 <div class="pull-right navbar-brand">
-                    <a href="#!/user/:uid/website/:wid/page">
+                    <a href="#!/user/{{model.userId}}/website/:wid/page">
                         <span class="glyphicon glyphicon-ok"></span>
                     </a>
                 </div>
@@ -32,7 +32,7 @@
             <div class="col-xs-10"></div>
             <div class="col-xs-2 pull-right">
                 <div class="pull-right navbar-text">
-                    <a href="#!/user/:uid"><span class="glyphicon glyphicon-user"></span></a>
+                    <a href="#!/user/{{model.userId}}"><span class="glyphicon glyphicon-user"></span></a>
                 </div>
             </div>
         </div>

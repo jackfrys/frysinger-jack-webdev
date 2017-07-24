@@ -66,7 +66,7 @@
                 }
             }
 
-            return wds;
+            widgets = wds;
         }
 
     }
