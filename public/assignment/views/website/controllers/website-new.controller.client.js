@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("NewWebsiteController", NewWebsiteController);
 
-    function NewWebsiteController($scope) {
+    function NewWebsiteController($scope, $routeParams, WebsiteService) {
         var vm = this;
         vm.userId = $routeParams["uid"];
         function init() {
