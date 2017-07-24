@@ -5,7 +5,7 @@
 
     function PageListController($routeParams, PageSerivce) {
         var vm = this;
-        vm.websiteId = $routeParams["websiteId"];
+        vm.websiteId = $routeParams["wid"];
         function init() {
             vm.pages = PageSerivce.findPageByWebsiteId(websiteId);
         }

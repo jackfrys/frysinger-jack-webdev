@@ -5,7 +5,7 @@
 
     function EditPageController($routeParams, PageService) {
         var vm = this;
-        vm.pageId = $routeParams["pageId"];
+        vm.pageId = $routeParams["pid"];
         function init() {
             vm.page = PageService.findPageById(pageId);
         }

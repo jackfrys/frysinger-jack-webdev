@@ -5,7 +5,7 @@
 
     function EditWebsiteController($routeParams, WebsiteService) {
         var vm = this;
-        vm.websiteId = $routeParams["websiteId"];
+        vm.websiteId = $routeParams["wid"];
         vm.updateWebsite = updateWebsite;
         vm.deleteWebsite = deleteWebsite;
         function init() {
