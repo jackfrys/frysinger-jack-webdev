@@ -30,7 +30,7 @@
             var ps = [];
 
             for (var p in pages) {
-                if (pages[p]._id == websiteId) {
+                if (pages[p].websiteId == websiteId) {
                     ps.push(pages[p]);
                 }
             }

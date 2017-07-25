@@ -17,11 +17,12 @@
         
         function updateWebsite(website) {
             WebsiteService.updateWebsite(vm.websiteId, website);
-            $location.url("#!/user/" + vm.userId + "/website");
+            $location.path("/user/" + vm.userId + "/website");
         }
         
         function deleteWebsite() {
             WebsiteService.deleteWebsite(vm.websiteId);
+            $location.path("/user/" + vm.userId + "/website");
         }
     }
 })();
