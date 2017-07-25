@@ -18,14 +18,17 @@
 </nav>
 
 <div class="container-fluid">
-    <form>
-        <label for="pageName">Name</label>
-        <input class="form-control" type="text" placeholder="Page Name" name="pageName" id="pageName"/>
-        <label for="text">Text</label>
-        <input class="form-control" type="text" placeholder="Text" name="text" id="text"/>
-        <label for="size">Size</label>
-        <input class="form-control" type="text" placeholder="Size" name="size" id="size"/>
-    </form>
+    <div ng-switch="widget.widgetType">
+        <div ng-switch-when="HEADING">
+            <ng-include src="'widget-heading-edit.view.client.html'">
+        </div>
+        <div ng-switch-when="IMAGE">
+            <ng-include src="'widget-image-edit.view.client.html'">
+        </div>
+        <div ng-switch-when="YOUTUBE">
+            <ng-include src="'widget-youtube-edit.view.client.html'">
+        </div>
+    </div>
     <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="btn btn-primary btn-lg btn-block btn-danger">Delete</a>
 </div>
 

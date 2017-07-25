@@ -5,5 +5,8 @@
 
     function NewPageController($scope) {
         var vm = this;
+
+        vm.userId = $routeParams["uid"];
+        vm.websiteId = $routeParams["wid"];
     }
 })();

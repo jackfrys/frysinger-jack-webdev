@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("EditWebsiteController", EditWebsiteController);
 
-    function EditWebsiteController($routeParams, WebsiteService) {
+    function EditWebsiteController($routeParams, WebsiteService, $location) {
         var vm = this;
         vm.websiteId = $routeParams["wid"];
         vm.userId = $routeParams["uid"];
@@ -16,7 +16,8 @@
         init();
         
         function updateWebsite(website) {
-            WebsiteService.updateWebsite(vm.websiteId, website)
+            WebsiteService.updateWebsite(vm.websiteId, website);
+            $location.url("#!/user/" + vm.userId + "/website");
         }
         
         function deleteWebsite() {
