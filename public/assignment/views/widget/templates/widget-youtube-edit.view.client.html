@@ -1,10 +1,10 @@
 <form>
     <label for="pageName">Name</label>
-    <input class="form-control" type="text" placeholder="Page Name" name="pageName" id="pageName"/>
+    <input ng-model="model.widget.name" class="form-control" type="text" placeholder="Page Name" name="pageName" id="pageName"/>
     <label for="text">Text</label>
-    <input class="form-control" type="text" placeholder="Text" name="text" id="text"/>
+    <input ng-model="model.widget.text" class="form-control" type="text" placeholder="Text" name="text" id="text"/>
     <label for="url">URL</label>
-    <input class="form-control" type="url" placeholder="URL" name="url" id="url"/>
+    <input ng-model="model.widget.url" class="form-control" type="url" placeholder="URL" name="url" id="url"/>
     <label for="width">Width</label>
-    <input class="form-control" type="number" placeholder="Width" name="width" id="width"/>
+    <input ng-model="model.widget.width" class="form-control" type="number" placeholder="Width" name="width" id="width"/>
 </form>

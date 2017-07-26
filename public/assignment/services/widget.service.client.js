@@ -22,7 +22,8 @@
             "findWidgetsByPageId": findWidgetsByPageId,
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
-            "deleteWidget": deleteWidget
+            "deleteWidget": deleteWidget,
+            "unusedWidgetId": unusedWidgetId
         };
 
         return api;
@@ -67,6 +68,23 @@
             }
 
             widgets = wds;
+        }
+
+        function unusedWidgetId() {
+            var x = 100;
+            while (!unusedId()) {
+                x++;
+            }
+            return x;
+        }
+
+        function unusedId(x) {
+            for (w in widgets) {
+                if (widgets[w]._id == x) {
+                    return false;
+                }
+            }
+            return true;
         }
 
     }
