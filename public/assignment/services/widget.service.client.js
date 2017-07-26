@@ -71,21 +71,7 @@
         }
 
         function unusedWidgetId() {
-            var x = 100;
-            while (!unusedId()) {
-                x++;
-            }
-            return x;
+            return Math.round(Math.random() * 10000000);
         }
-
-        function unusedId(x) {
-            for (w in widgets) {
-                if (widgets[w]._id == x) {
-                    return false;
-                }
-            }
-            return true;
-        }
-
     }
 })();

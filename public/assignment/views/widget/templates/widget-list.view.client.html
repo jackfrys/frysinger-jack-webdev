@@ -27,7 +27,7 @@
                     </a>
                     <span class="glyphicon glyphicon-align-justify pull-right"></span>
                 </div>
-                <h1><span ng-bind-html="widget.text"></span></h1>
+                <h1><span ng-bind-html="model.trustHTML(widget.text)"></span></h1>
             </div>
             <div ng-switch-when="IMAGE">
                 <div class="jcf-widget-tools">
@@ -36,7 +36,7 @@
                     </a>
                     <span class="glyphicon glyphicon-align-justify pull-right"></span>
                 </div>
-                <img width="{{widget.width}}" ng-src="{{widget.url.$$unwrapTrustedValue()}}">
+                <img width="{{widget.width}}" ng-src="{{widget.url}}">
             </div>
             <div ng-switch-when="YOUTUBE">
                 <div class="jcf-widget-tools">
@@ -46,7 +46,7 @@
                     <span class="glyphicon glyphicon-align-justify pull-right"></span>
                 </div>
                 <div class="embed-responsive embed-responsive-4by3 content jcf-youtube">
-                    <iframe src="{{widget.url}}" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="{{model.trustYoutube(widget.url)}}" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
             <div ng-switch-when="HTML">
