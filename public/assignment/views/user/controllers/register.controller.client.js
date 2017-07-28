@@ -9,8 +9,9 @@
         vm.user = {"_id" : Math.round(Math.random() * 1000000)}
 
         function createUser() {
-            UserService.createUser(vm.user);
-            $location.path("/user/" + vm.user._id);
+            UserService.createUser(vm.user).then(function () {
+                $location.path("/user/" + vm.user._id);
+            });
         }
     }
 })();

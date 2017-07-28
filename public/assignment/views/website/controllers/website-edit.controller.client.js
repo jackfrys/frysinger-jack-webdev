@@ -16,13 +16,15 @@
         init();
         
         function updateWebsite(website) {
-            WebsiteService.updateWebsite(vm.websiteId, website);
-            $location.path("/user/" + vm.userId + "/website");
+            WebsiteService.updateWebsite(vm.websiteId, website).then(function () {
+                $location.path("/user/" + vm.userId + "/website");
+            });
         }
         
         function deleteWebsite() {
-            WebsiteService.deleteWebsite(vm.websiteId);
-            $location.path("/user/" + vm.userId + "/website");
+            WebsiteService.deleteWebsite(vm.websiteId).then(function () {
+                $location.path("/user/" + vm.userId + "/website");
+            });
         }
     }
 })();

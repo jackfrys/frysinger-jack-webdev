@@ -12,7 +12,9 @@
         vm.widgetId = $routeParams["wgid"];
 
         function init() {
-            vm.widget = WidgetService.findWidgetById(vm.widgetId);
+            WidgetService.findWidgetById(vm.widgetId).then(function (widget) {
+                vm.widget = widget;
+            });
         }
         init();
     }

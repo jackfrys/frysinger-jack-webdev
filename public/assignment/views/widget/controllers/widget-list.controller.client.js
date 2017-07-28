@@ -14,7 +14,9 @@
         vm.trustHTML = trustHTML;
 
         function init() {
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
+            WidgetService.findWidgetsByPageId(vm.pageId).then(function (widgets) {
+                vm.widgets = widgets;
+            });
         }
         init();
 

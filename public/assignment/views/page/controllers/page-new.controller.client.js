@@ -14,8 +14,9 @@
 
         function newPage(page) {
             page._id = Math.round(Math.random() * 1000);
-            PageService.createPage(vm.websiteId, page);
-            $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+            PageService.createPage(vm.websiteId, page).then(function () {
+                $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+            });
         }
     }
 })();

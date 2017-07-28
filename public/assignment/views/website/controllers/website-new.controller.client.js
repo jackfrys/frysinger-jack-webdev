@@ -9,14 +9,16 @@
         vm.newWebsite = newWebsite;
         vm.website = {};
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+            WebsiteService.findWebsitesByUser(vm.userId).then(function (websites) {
+                vm.websites = websites;
+            });
         }
         init();
 
         function newWebsite(website) {
-            website._id = Math.round(Math.random() * 100000);
-            WebsiteService.createWebsite(vm.userId, website);
-            $location.path("/user/" + vm.userId + "/website");
+            WebsiteService.createWebsite(vm.userId, website).then(function () {
+                $location.path("/user/" + vm.userId + "/website");
+            });
         }
     }
 })();

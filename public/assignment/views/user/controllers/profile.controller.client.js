@@ -7,7 +7,9 @@
         var vm = this;
         vm.userId = $routeParams["uid"];
         function init() {
-            vm.user = UserService.findUserById(vm.userId);
+            UserService.findUserById(vm.userId).then(function (user) {
+                vm.user = user;
+            });
         }
         init();
     }
