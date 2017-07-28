@@ -22,12 +22,12 @@
 
         function findPageByWebsiteId(websiteId) {
             var url = "/api/website/" + websiteId + "/page";
-            $http.get(url);
+            return $http.get(url);
         }
 
         function findPageById(pageId) {
             var url = "/api/page/" + pageId;
-            $http.get(url);
+            return $http.get(url);
         }
 
         function updatePage(pageId, page) {

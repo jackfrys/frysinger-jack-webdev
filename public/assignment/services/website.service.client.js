@@ -22,12 +22,12 @@
 
         function findWebsitesByUser(userId) {
             var url = "/api/user/" + userId + "/website";
-            $http.get(url);
+            return $http.get(url);
         }
 
         function findWebsiteById(websiteId) {
             var url = "/api/website/" + websiteId;
-            $http.get(url);
+            return $http.get(url);
         }
 
         function updateWebsite(websiteId, website) {
