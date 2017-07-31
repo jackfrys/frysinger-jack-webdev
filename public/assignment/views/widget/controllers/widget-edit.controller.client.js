@@ -13,7 +13,7 @@
 
         function init() {
             WidgetService.findWidgetById(vm.widgetId).then(function (widget) {
-                vm.widget = widget;
+                vm.widget = widget.data;
             });
         }
         init();

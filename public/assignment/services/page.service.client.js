@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .service("PageService", PageService);
 
-    function PageService() {
+    function PageService($http) {
 
         var api = {
             "createPage": createPage,

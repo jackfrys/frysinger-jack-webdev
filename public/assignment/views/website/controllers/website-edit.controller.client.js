@@ -10,8 +10,13 @@
         vm.updateWebsite = updateWebsite;
         vm.deleteWebsite = deleteWebsite;
         function init() {
-            vm.website = WebsiteService.findWebsiteById(vm.websiteId);
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+            WebsiteService.findWebsiteById(vm.websiteId).then(function (website) {
+                vm.website = website.data;
+            });
+
+            WebsiteService.findWebsitesByUser(vm.userId).then(function (websites) {
+                vm.websites = websites.data;
+            });
         }
         init();
         

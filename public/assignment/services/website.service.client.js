@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .service("WebsiteService", WebsiteService);
 
-    function WebsiteService() {
+    function WebsiteService($http) {
 
         var api = {
             "createWebsite" : createWebsite,

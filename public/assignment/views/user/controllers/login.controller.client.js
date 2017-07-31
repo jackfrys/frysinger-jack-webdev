@@ -10,7 +10,7 @@
         function login(user) {
             UserService.findUserByCredentials(user.username, user.password).then(function (myUser) {
                 if (myUser) {
-                    $location.url("/user/" + myUser._id);
+                    $location.url("/user/" + myUser.data._id);
                 } else {
                     vm.alert = "Unable to login";
                 }

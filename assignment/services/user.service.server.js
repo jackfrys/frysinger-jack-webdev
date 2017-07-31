@@ -8,8 +8,7 @@ var users = [
 ];
 
 app.post("/api/user", createUser);
-app.get("/api/user?username=username", findUserByUsername);
-app.get("/api/user?username=username&password=password", findUserByCredentials);
+app.get("/api/user", findUserByCredentials);
 app.get("/api/user/:userId", findUserById);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
@@ -21,26 +20,14 @@ function createUser(req, res) {
     res.send(user);
 }
 
-function findUserByUsername(req, res) {
-    var username = req.query.username;
-
-    for (var u in users) {
-        if (users[u].username = username) {
-            res.send(users[u]);
-            return;
-        }
-    }
-
-}
-
 function findUserByCredentials(req, res) {
     var username = req.query.username;
-    var password = req.query.password;
+    var passwordProvided = req.query.hasOwnProperty("password");
 
     for (var u in users) {
         var user = users[u];
 
-        if (user.username == username && user.password == password) {
+        if (user.username == username && (!passwordProvided || user.password == req.query.password)) {
             res.send(user);
             return;
         }

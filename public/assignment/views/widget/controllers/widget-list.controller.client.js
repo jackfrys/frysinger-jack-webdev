@@ -15,7 +15,7 @@
 
         function init() {
             WidgetService.findWidgetsByPageId(vm.pageId).then(function (widgets) {
-                vm.widgets = widgets;
+                vm.widgets = widgets.data;
             });
         }
         init();
