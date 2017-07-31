@@ -39,7 +39,7 @@ function findAllWebsitesForUser(req, res) {
 function findWebsiteById(req, res) {
     for (var w in websites) {
         var website = websites[w];
-        if (website_id == res.params.websiteId) {
+        if (website._id == req.params.websiteId) {
             res.send(website);
             return;
         }

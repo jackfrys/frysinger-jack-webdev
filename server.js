@@ -14,7 +14,7 @@ require("./test/app");
 port = process.env.PORT || 3000;
 app.listen(port);
 
-require("./assignment/app.js")(app)
+require("./assignment/app.js");
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));

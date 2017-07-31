@@ -53,7 +53,7 @@ function findUserById(req, res) {
 
     for (var u in users) {
         if (users[u]._id == userId) {
-            res.send(user);
+            res.send(users[u]);
             return;
         }
     }
