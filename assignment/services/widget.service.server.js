@@ -1,4 +1,4 @@
-var app = require("../express");
+var app = require("../../express");
 
 var widgets = [
     { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
