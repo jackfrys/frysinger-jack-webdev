@@ -14,21 +14,21 @@
         vm.newImage = newImage;
 
         function newHeader() {
-            var widgetId = WidgetService.unusedWidgetId();
-            WidgetService.createWidget(vm.pageId, {"_id" : widgetId, "widgetType" : "HEADING"});
-            $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widgetId);
+            WidgetService.createWidget(vm.pageId, {"widgetType" : "HEADING"}).then(function (widget) {
+                $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widget.data._id);
+            });
         }
 
         function newYoutube() {
-            var widgetId = WidgetService.unusedWidgetId();
-            WidgetService.createWidget(vm.pageId, {"_id" : widgetId, "widgetType" : "YOUTUBE"});
-            $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widgetId);
+            WidgetService.createWidget(vm.pageId, {"widgetType" : "YOUTUBE"}).then(function (widget) {
+                $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widget.data._id);
+            });
         }
 
         function newImage() {
-            var widgetId = WidgetService.unusedWidgetId();
-            WidgetService.createWidget(vm.pageId, {"_id" : widgetId, "widgetType" : "IMAGE"});
-            $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widgetId);
+            WidgetService.createWidget(vm.pageId, {"widgetType" : "IMAGE"}).then(function (widget) {
+                $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widget.data._id);
+            });
         }
     }
 })();

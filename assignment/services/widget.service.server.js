@@ -22,9 +22,10 @@ app.delete("/api/widget/:widgetId", deleteWidget);
 function createWidget(req, res) {
     var widget = req.body;
     widget.pageId = req.params.pageId;
-    wodget._id = new Date().getTime() + "";
+    widget._id = new Date().getTime() + "";
 
     widgets.push(widget);
+    res.send(widget);
 }
 
 function findAllWidgetsForPage(req, res) {
@@ -43,7 +44,7 @@ function findAllWidgetsForPage(req, res) {
 
 function findWidgetById(req, res) {
     for (var wd in widgets) {
-        if (widgets[wd]._id == req.params.pageId) {
+        if (widgets[wd]._id == req.params.widgetId) {
             res.send(widgets[wd])
             return;
         }
@@ -58,6 +59,7 @@ function updateWidget(req, res) {
         if (widgets[w]._id == wdId) {
             newWd._id == wdId;
             widgets[w] = newWd;
+            res.send(200);
             return;
         }
     }
