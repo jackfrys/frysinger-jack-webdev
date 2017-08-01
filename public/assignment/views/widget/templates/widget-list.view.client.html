@@ -17,7 +17,7 @@
     </div>
 </nav>
 
-<div class="container-fluid">
+<div class="container-fluid" id="sortable">
     <div ng-repeat="widget in model.widgets">
         <div ng-switch="widget.widgetType">
             <div ng-switch-when="HEADING">
@@ -59,6 +59,22 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function () {
+        $('#sortable').sortable({
+            start: function (edit, ui) {
+                $(this).attr("start", ui.item.index());
+            },
+            update: function (edit, ui) {
+                var pageId = window.location.href.split("/")[10];
+                var url = "/page/" + pageId + "/widget?initial=" + $(this).attr("start") + "&final=" + ui.item.index();
+                $(this).removeAttr("start");
+                $.ajax({type: "PUT", url: url})
+            }
+        });
+    });
+</script>
 
 <nav class="navbar navbar-default navbar-fixed-bottom jcf-footer-default">
     <div class="container-fluid">

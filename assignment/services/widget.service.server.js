@@ -16,6 +16,7 @@ app.post("/api/page/:pageId/widget", createWidget);
 app.get("/api/page/:pageId/widget", findAllWidgetsForPage);
 app.get("/api/widget/:widgetId", findWidgetById);
 app.put("/api/widget/:widgetId", updateWidget);
+app.put("/page/:pageId/widget", reorderWidget);
 app.delete("/api/widget/:widgetId", deleteWidget);
 
 function createWidget(req, res) {
@@ -60,6 +61,51 @@ function updateWidget(req, res) {
             return;
         }
     }
+}
+
+function reorderWidget(req, res) {
+    // separate widgets for page
+    var page = [];
+    var nonPage = [];
+
+    for (var w in widgets) {
+        var widget = widgets[w];
+        if (widget.pageId == req.params.pageId) {
+            page.push(widget);
+        } else {
+            nonPage.push(widget);
+        }
+    }
+
+    // remove the moved widget
+    var pageRemoved = [];
+    var wid = undefined;
+    for (var w in page) {
+        var widget = page[w];
+        if (w == req.query.initial) {
+            wid = widget;
+        } else {
+            pageRemoved.push(widget);
+        }
+    }
+
+    // insert back into widgets
+    var sortedPage = [];
+    for (var w in pageRemoved) {
+        var widget = pageRemoved[w];
+        if (w == req.query.final) {
+            sortedPage.push(wid);
+        }
+
+        sortedPage.push(widget);
+    }
+
+    // add back to original
+    for (var w in sortedPage) {
+        nonPage.push(sortedPage[w]);
+    }
+
+    widgets = nonPage;
 }
 
 function deleteWidget(req, res) {
