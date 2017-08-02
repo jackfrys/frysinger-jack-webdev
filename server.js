@@ -10,12 +10,11 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 require("./test/app");
+require("./assignment/app.js");
 
 port = process.env.PORT || 3000;
 app.listen(port);
 
-require("./assignment/app.js");
-
-var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// var bodyParser = require('body-parser');
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
