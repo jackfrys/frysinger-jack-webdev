@@ -18,6 +18,7 @@ function createPage(req, res) {
     page._id = new Date().getTime() + "";
 
     pages.push(page);
+    res.send(200);
 }
 
 function findAllPagesForWebsite(req, res) {
@@ -47,8 +48,8 @@ function updatePage(req, res) {
 
     for (var p in pages) {
         if (pages[p]._id == req.params.pageId) {
-            newPage._id == req.params.pageId;
-            pages[p] == newPage;
+            newPage._id = req.params.pageId;
+            pages[p] = newPage;
             res.send(200);
             return;
         }

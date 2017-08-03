@@ -8,7 +8,7 @@
             </div>
             <div class="col-xs-2 pull-right">
                 <div class="pull-right navbar-brand">
-                    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                    <a href ng-click="model.updatePage()">
                         <span class="glyphicon glyphicon-ok"></span>
                     </a>
                 </div>
@@ -24,7 +24,7 @@
         <label for="pageTitle">Title</label>
         <input ng-model="model.page.title" class="form-control" type="text" placeholder="Page Title" name="pageTitle" id="pageTitle"/>
     </form>
-    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" class="btn btn-primary btn-lg btn-block btn-danger">Delete</a>
+    <a href ng-click="model.deletePage()" class="btn btn-primary btn-lg btn-block btn-danger">Delete</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom jcf-footer-default">
