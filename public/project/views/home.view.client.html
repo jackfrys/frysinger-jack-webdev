@@ -1,3 +1,7 @@
+<form>
+    <input ng-model="model.search" placeholder="stop-name"/>
+    <button ng-click="model.submit()">Submit</button>
+</form>
 <ol>
     <div ng-repeat="stop in model.stops">
         <li><a href="#!/{{stop}}">{{stop}}</a></li>
