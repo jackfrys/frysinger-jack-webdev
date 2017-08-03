@@ -145,10 +145,11 @@ function deleteWidget(req, res) {
     var newWds = [];
 
     for (var w in widgets) {
-        if (widgets[w] != res.params.widgetId) {
+        if (widgets[w]._id != req.params.widgetId) {
             newWds.push(widgets[w]);
         }
     }
 
     widgets = newWds;
+    res.send(200);
 }

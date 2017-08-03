@@ -22,6 +22,7 @@ function createWebsite(req, res) {
     website.developerId = req.params.userId;
 
     websites.push(website);
+    res.send(200);
 }
 
 function findAllWebsitesForUser(req, res) {
@@ -53,6 +54,7 @@ function updateWebsite(req, res) {
         if (websites[w]._id == req.params.websiteId) {
             newWebsite._id = req.params.websiteId;
             websites[w] = newWebsite;
+            res.send(200);
             return;
         }
     }
@@ -68,4 +70,5 @@ function deleteWebsite(req, res) {
     }
 
     websites = newWs;
+    res.send(200);
 }

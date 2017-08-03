@@ -56,6 +56,8 @@ function updateUser(req, res) {
             return;
         }
     }
+
+    res.send(200);
 }
 
 function deleteUser(req, res) {
@@ -69,4 +71,5 @@ function deleteUser(req, res) {
     }
 
     users = newUsers;
+    res.send(200);
 }

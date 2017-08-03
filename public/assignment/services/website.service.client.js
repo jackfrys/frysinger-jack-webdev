@@ -17,7 +17,7 @@
 
         function createWebsite(userId, website) {
             var url = "/api/user/" + userId + "/website";
-            $http.post(url, website);
+            return $http.post(url, website);
         }
 
         function findWebsitesByUser(userId) {
@@ -32,12 +32,12 @@
 
         function updateWebsite(websiteId, website) {
             var url = "/api/website/" + websiteId;
-            $http.post(url, website);
+            return $http.put(url, website);
         }
 
         function deleteWebsite(websiteId) {
             var url = "/api/website/" + websiteId;
-            $http.delete(url);
+            return $http.delete(url);
         }
 
     }

@@ -49,6 +49,7 @@ function updatePage(req, res) {
         if (pages[p]._id == req.params.pageId) {
             newPage._id == req.params.pageId;
             pages[p] == newPage;
+            res.send(200);
             return;
         }
     }

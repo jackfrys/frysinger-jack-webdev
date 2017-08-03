@@ -12,6 +12,7 @@
         vm.widgetId = $routeParams["wgid"];
 
         vm.saveChanges = saveChanges;
+        vm.deleteWidget = deleteWidget;
 
         function init() {
             WidgetService.findWidgetById(vm.widgetId).then(function (widget) {
@@ -24,6 +25,12 @@
             WidgetService.updateWidget(vm.widgetId, vm.widget).then(function (response) {
                 $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/");
             });
+        }
+
+        function deleteWidget() {
+            WidgetService.deleteWidget(vm.widgetId).then(function (response) {
+                $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/");
+            })
         }
     }
 })();
