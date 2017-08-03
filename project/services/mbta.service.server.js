@@ -53,4 +53,22 @@ function stopsForRoute(routeId, stops, callback) {
 
 function predictions(req, res) {
     var stopId = req.params.stopId;
+    request("http://realtime.mbta.com/developer/api/v2/predictionsbystop?api_key=wX9NwuHnZU2ToO7GmGR9uw&stop=" + stopId + "&format=json", function (err, result, body) {
+        var trips = {};
+        var j = JSON.parse(body);
+        for (var m in j.mode) {
+            var mode = j.mode[m];
+            if (mode.mode_name == "Subway") {
+                for (var r in mode.route) {
+                    var one = mode.route[r].direction[0].trip[0];
+                    trips[one.trip_headsign] = {time: Math.floor(one.pre_away / 60), line: mode.route[r].route_name};
+
+                    var two = mode.route[r].direction[1].trip[0];
+                    trips[two.trip_headsign] = {time : Math.floor(two.pre_away / 60), line : mode.route[r].route_name};
+                }
+            }
+        }
+
+        res.send(trips);
+    })
 }
