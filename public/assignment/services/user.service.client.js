@@ -37,12 +37,12 @@
         }
         
         function updateUser(userId, user) {
-            var url = "/api/user" + userId;
+            var url = "/api/user/" + userId;
             $http.put(url, user);
         }
         
         function deleteUser(userId) {
-            var url = "/api/user" + userId;
+            var url = "/api/user/" + userId;
             $http.delete(url);
         }
     }
