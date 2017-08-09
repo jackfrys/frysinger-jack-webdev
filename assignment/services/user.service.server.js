@@ -16,8 +16,8 @@ app.delete("/api/user/:userId", deleteUser);
 
 function createUser(req, res) {
     var user = req.body;
-    userModel.createUser(user).then(function (status) {
-        res.send(200);
+    userModel.createUser(user).then(function (user) {
+        res.json(user);
     });
 }
 

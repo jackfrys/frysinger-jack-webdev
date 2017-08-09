@@ -18,7 +18,7 @@
 
         function createUser(user) {
             var url = "/api/user";
-            $http.post(url, user);
+            return $http.post(url, user);
         }
         
         function findUserById(userId) {
