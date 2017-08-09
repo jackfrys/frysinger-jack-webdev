@@ -12,12 +12,12 @@ widgetModel.reorderWidget = reorderWidget;
 module.exports = widgetModel;
 
 function createWidget(pageId, widget) {
-    widget.page = mongoose.Schema.Types.ObjectId(pageId);
+    widget._page = mongoose.Schema.Types.ObjectId(pageId);
     return widgetModel.create(widget);
 }
 
 function findAllWidgetsForPage(pageId) {
-    return widgetModel.find({page: mongoose.Schema.Types.ObjectId(pageId)});
+    return widgetModel.find({_page: mongoose.Schema.Types.ObjectId(pageId)});
 }
 
 function findWidgetById(widgetId) {

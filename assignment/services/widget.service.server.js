@@ -55,8 +55,8 @@ function createWidget(req, res) {
     var widget = req.body;
     var pageId = req.params.pageId;
 
-    widgetModel.createWidget(pageId, widget).then(function () {
-        res.send(200);
+    widgetModel.createWidget(pageId, widget).then(function (widget) {
+        res.send(widget);
     });
 }
 

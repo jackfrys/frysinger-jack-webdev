@@ -19,7 +19,7 @@
 
 <div class="container-fluid" id="sortable">
     <div ng-repeat="widget in model.widgets">
-        <div ng-switch="widget.widgetType">
+        <div ng-switch="widget.type">
             <div ng-switch-when="HEADING">
                 <div class="jcf-widget-tools">
                     <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
