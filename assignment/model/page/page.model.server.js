@@ -1,35 +1,32 @@
 var mongoose = require("mongoose");
-var websiteSchema = require("./website.schema.server");
-var userSchema = require("./user.schema.server");
 var pageSchema = require("./page.schema.server");
 var db = require("../database");
-var websiteModel = mongoose.model("WebsiteModel", websiteSchema);
-var userModel = mongoose.model("UserModel", userSchema);
-var pageModel = mongoose.model("PageModel", pageModel);
+var pageModel = mongoose.model("PageModel", pageSchema);
+
+pageModel.createPage = createPage;
+pageModel.findAllPagesForWebsite = findAllPagesForWebsite;
+pageModel.findPageById = findPageById;
+pageModel.updatePage = updatePage;
+pageModel.deletePage = deletePage;
 module.exports = pageModel;
 
-this.createPage = createPage;
-this.findAllPagesForWebsite = findAllPagesForWebsite;
-this.findPageById = findPageById;
-this.updatePage = updatePage;
-this.deletePage = deletePage;
-
 function createPage(websiteId, page) {
-
+    page.websiteId = mongoose.Schema.Types.ObjectId(websiteId);
+    return pageModel.create(page);
 }
 
 function findAllPagesForWebsite(websiteId) {
-
+    return pageModel.find({websiteId:mongoose.Schema.Types.ObjectId(websiteId)});
 }
 
 function findPageById(pageId) {
-
+    return pageModel.findById(pageId);
 }
 
 function updatePage(pageId, page) {
-
+    return pageModel.findOneAndUpdate({_id:pageId}, {$set:page});
 }
 
 function deletePage(pageId) {
-
+    return pageModel.findOneAndRemove({_id:pageId});
 }

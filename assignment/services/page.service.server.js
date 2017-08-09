@@ -1,4 +1,5 @@
 var app = require("../../express");
+var pageModel = require("../model/page/page.model.server");
 
 var pages = [
     {"_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem"},
@@ -14,55 +15,41 @@ app.delete("/api/page/:pageId", deletePage);
 
 function createPage(req, res) {
     var page = req.body;
-    page.websiteId = req.params.websiteId;
+    var websiteId = req.params.websiteId;
 
-    pages.push(page);
-    res.send(200);
+    pageModel.createPage(websiteId, page).then(function () {
+        res.send(200);
+    });
 }
 
 function findAllPagesForWebsite(req, res) {
-    var ps = [];
+    var websiteId = req.params.websiteId;
 
-    for (var p in pages) {
-        var page = pages[p];
-        if (page.websiteId == req.params.websiteId) {
-            ps.push(page);
-        }
-    }
-
-    res.send(ps);
+    pageModel.findAllPagesForWebsite(websiteId).then(function (pages) {
+        res.json(pages);
+    });
 }
 
 function findPageById(req, res) {
-    for (var p in pages) {
-        if (pages[p]._id == req.params.pageId) {
-            res.send(pages[p]);
-            return;
-        }
-    }
+    var pageId = req.params.pageId;
+
+    pageModel.findPageById(pageId).then(function (page) {
+        res.json(page);
+    });
 }
 
 function updatePage(req, res) {
-    var newPage = req.body;
+    var pageId = req.params.pageId;
 
-    for (var p in pages) {
-        if (pages[p]._id == req.params.pageId) {
-            newPage._id = req.params.pageId;
-            pages[p] = newPage;
-            res.send(200);
-            return;
-        }
-    }
+    pageModel.updatePage(pageId, req.body).then(function () {
+        res.send(200);
+    });
 }
 
 function deletePage(req, res) {
-    var newPs = [];
+    var pageId = req.params.pageId;
 
-    for (var p in pages) {
-        if (pages[p]._id != req.params.pageId) {
-            newPs.push(pages[p]);
-        }
-    }
-
-    res.send(newPs);
+    pageModel.deletePage(pageId).then(function () {
+        res.send(200);
+    });
 }
