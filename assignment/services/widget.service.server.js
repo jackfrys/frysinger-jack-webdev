@@ -1,4 +1,5 @@
 var app = require("../../express");
+var widgetModel = require("../model/widget/widget.model.server");
 
 var widgets = [
     { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -52,47 +53,36 @@ function uploadImage(req, res) {
 
 function createWidget(req, res) {
     var widget = req.body;
-    widget.pageId = req.params.pageId;
+    var pageId = req.params.pageId;
 
-    widgets.push(widget);
-    res.send(widget);
+    widgetModel.createWidget(pageId, widget).then(function () {
+        res.send(200);
+    });
 }
 
 function findAllWidgetsForPage(req, res) {
     var pageId = req.params.pageId;
-    var wds = [];
 
-    for (var w in widgets) {
-        var wd = widgets[w];
-        if (wd.pageId == pageId) {
-            wds.push(wd);
-        }
-    }
-
-    res.send(wds);
+    widgetModel.findAllWidgetsForPage(pageId).then(function (widgets) {
+        res.json(widgets);
+    });
 }
 
 function findWidgetById(req, res) {
-    for (var wd in widgets) {
-        if (widgets[wd]._id == req.params.widgetId) {
-            res.send(widgets[wd])
-            return;
-        }
-    }
+    var widgetId = req.params.widgetId;
+
+    widgetModel.findWidgetById(widgetId).then(function (widget) {
+        res.json(widget);
+    });
 }
 
 function updateWidget(req, res) {
     var newWd = req.body;
     var wdId = req.params.widgetId;
 
-    for (var w in widgets) {
-        if (widgets[w]._id == wdId) {
-            newWd._id == wdId;
-            widgets[w] = newWd;
-            res.send(200);
-            return;
-        }
-    }
+    widgetModel.updateWidget(wdId, newWd).then(function () {
+        res.send(200);
+    });
 }
 
 function reorderWidget(req, res) {
@@ -141,14 +131,9 @@ function reorderWidget(req, res) {
 }
 
 function deleteWidget(req, res) {
-    var newWds = [];
+    var widgetId = req.params.widgetId;
 
-    for (var w in widgets) {
-        if (widgets[w]._id != req.params.widgetId) {
-            newWds.push(widgets[w]);
-        }
-    }
-
-    widgets = newWds;
-    res.send(200);
+    widgetModel.deleteWidget(widgetId).then(function () {
+        res.send(200);
+    });
 }

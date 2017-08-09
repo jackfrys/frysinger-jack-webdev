@@ -33,5 +33,5 @@ function deleteWidget(widgetId) {
 }
 
 function reorderWidget(pageId, start, end) {
-    
+
 }
