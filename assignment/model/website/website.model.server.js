@@ -1,25 +1,26 @@
 var mongoose = require("mongoose");
 var websiteSchema = require("./website.schema.server");
-var userSchema = require("./user.schema.server");
-var db = require("./database");
+var userSchema = require("../user/user.schema.server");
+var db = require("../database");
 var websiteModel = mongoose.model("WebsiteModel", websiteSchema);
 var userModel = mongoose.model("UserModel", userSchema);
 
-this.createWebsiteForUser = createWebsiteForUser;
-this.findAllWebsitesForUser = findAllWebsitesForUser;
-this.findWebsiteById = findWebsiteById;
-this.updateWebsite = updateWebsite;
-this.deleteWebsite = deleteWebsite;
+websiteModel.createWebsiteForUser = createWebsiteForUser;
+websiteModel.findAllWebsitesForUser = findAllWebsitesForUser;
+websiteModel.findWebsiteById = findWebsiteById;
+websiteModel.updateWebsite = updateWebsite;
+websiteModel.deleteWebsite = deleteWebsite;
+module.exports = websiteModel;
 
 function createWebsiteForUser(userId, website) {
     return userModel.findById(userId).then(function (user) {
-        website.user = user;
+        website._user = mongoose.Schema.Types.ObjectId(userId);
         return websiteModel.create(website);
     })
 }
 
 function findAllWebsitesForUser(userId) {
-    return userModel.findById(userId).populate("pages");
+    return websiteModel.find({_user: mongoose.Schema.Types.ObjectId(userId)});
 }
 
 function findWebsiteById(websiteId) {
@@ -27,9 +28,9 @@ function findWebsiteById(websiteId) {
 }
 
 function updateWebsite(websiteId, website) {
-    return userModel.update({_id:userId}, {$set:user});
+    return websiteModel.update({_id:websiteId}, {$set:website});
 }
 
 function deleteWebsite(websiteId) {
-    return userModel.findOneAndRemove({_id:websiteId});
+    return websiteModel.findOneAndRemove({_id:websiteId});
 }

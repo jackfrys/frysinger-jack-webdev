@@ -1,4 +1,5 @@
 var app = require("../../express");
+var websiteModel = require("../model/website/website.model.server");
 
 var websites = [
     { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -18,57 +19,42 @@ app.delete("/api/website/:websiteId", deleteWebsite);
 
 function createWebsite(req, res) {
     var website = req.body;
-    website._id = new Date().getTime() + "";
-    website.developerId = req.params.userId;
+    var userId = req.params.userId;
 
-    websites.push(website);
-    res.send(200);
+    websiteModel.createWebsiteForUser(userId, website).then(function () {
+        res.send(200);
+    });
 }
 
 function findAllWebsitesForUser(req, res) {
-    var ws = [];
+    var userId = req.params.userId;
 
-    for (var w in websites) {
-        if (websites[w].developerId == req.params.userId) {
-            ws.push(websites[w]);
-        }
-    }
-
-    res.send(ws);
+    websiteModel.findAllWebsitesForUser(userId).then(function (websites) {
+        res.json(websites);
+    });
 }
 
 function findWebsiteById(req, res) {
-    for (var w in websites) {
-        var website = websites[w];
-        if (website._id == req.params.websiteId) {
-            res.send(website);
-            return;
-        }
-    }
+    var websiteId = req.params.websiteId;
+
+    websiteModel.findWebsiteById(websiteId).then(function (website) {
+        res.json(website);
+    });
 }
 
 function updateWebsite(req, res) {
     var newWebsite = req.body;
+    var id = req.params.websiteId;
 
-    for (var w in websites) {
-        if (websites[w]._id == req.params.websiteId) {
-            newWebsite._id = req.params.websiteId;
-            websites[w] = newWebsite;
-            res.send(200);
-            return;
-        }
-    }
+    websiteModel.updateWebsite(id, newWebsite).then(function () {
+        res.send(200);
+    });
 }
 
 function deleteWebsite(req, res) {
-    var newWs = [];
+    var websiteId = req.params.websiteId;
 
-    for (var w in websites) {
-        if (websites[w]._id != req.params.websiteId) {
-            newWd.push(websites[w]);
-        }
-    }
-
-    websites = newWs;
-    res.send(200);
+    websiteModel.deleteWebsite(websiteId).then(function () {
+        res.send(200);
+    });
 }

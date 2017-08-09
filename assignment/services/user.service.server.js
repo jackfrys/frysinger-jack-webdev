@@ -1,4 +1,5 @@
 var app = require("../../express");
+var userModel = require("../model/user/user.model.server");
 
 var users = [
     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", isAdmin: true  },
@@ -15,61 +16,41 @@ app.delete("/api/user/:userId", deleteUser);
 
 function createUser(req, res) {
     var user = req.body;
-    user._id = new Date().getTime() + "";
-    users.push(user);
-    res.send(user);
+    userModel.createUser(user).then(function (status) {
+        res.send(200);
+    });
 }
 
 function findUserByCredentials(req, res) {
     var username = req.query.username;
+    var password = req.query.password;
     var passwordProvided = req.query.hasOwnProperty("password");
 
-    for (var u in users) {
-        var user = users[u];
-
-        if (user.username == username && (!passwordProvided || user.password == req.query.password)) {
-            res.send(user);
-            return;
-        }
-    }
-
+    userModel.findUserByCredentials(username, password).then(function (user) {
+        res.json(user);
+    });
 }
 
 function findUserById(req, res) {
     var userId = req.params.userId;
 
-    for (var u in users) {
-        if (users[u]._id == userId) {
-            res.send(users[u]);
-            return;
-        }
-    }
+    userModel.findUserById(userId).then(function (user) {
+        res.send(user);
+    })
 }
 
 function updateUser(req, res) {
     var user = req.body;
     var userId = req.params.userId;
 
-    for (var u in users) {
-        if (users[u]._id == userId) {
-            users[u] = user;
-            return;
-        }
-    }
-
-    res.send(200);
+    userModel.updateUser(userId, user).then(function () {
+        res.send(200);
+    })
 }
 
 function deleteUser(req, res) {
     var user = req.params.userId;
-    var newUsers = []
-
-    for (var u in users) {
-        if (users[u]._id != userId) {
-            newUsers.push(users[u])
-        }
-    }
-
-    users = newUsers;
-    res.send(200);
+    userModel.deleteUser(userId).then(function () {
+        res.send(200);
+    });
 }

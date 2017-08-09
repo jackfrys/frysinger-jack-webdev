@@ -53,7 +53,6 @@ function uploadImage(req, res) {
 function createWidget(req, res) {
     var widget = req.body;
     widget.pageId = req.params.pageId;
-    widget._id = new Date().getTime() + "";
 
     widgets.push(widget);
     res.send(widget);

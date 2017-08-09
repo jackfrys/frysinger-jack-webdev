@@ -15,7 +15,6 @@ app.delete("/api/page/:pageId", deletePage);
 function createPage(req, res) {
     var page = req.body;
     page.websiteId = req.params.websiteId;
-    page._id = new Date().getTime() + "";
 
     pages.push(page);
     res.send(200);
