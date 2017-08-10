@@ -24,7 +24,7 @@
                 var w = d.data;
                 w.url = url;
                 WidgetService.updateWidget($routeParams["wgid"], w).then(function () {
-                    $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + $routeParams["wgid"]);
+                    $location.path("/user/" + $routeParams["uid"] + "/website/" + $routeParams["wid"] + "/page/" + $routeParams["pid"] + "/widget/" + $routeParams["wgid"]);
                 });
             });
         }
