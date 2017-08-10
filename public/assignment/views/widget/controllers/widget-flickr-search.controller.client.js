@@ -20,11 +20,13 @@
         function selectPhoto(photo) {
             var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
             url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
-            WidgetService
-                .updateWidget(websiteId, pageId, widgetId, {url: url})
-                .then(function () {
-                    $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widget.data._id);
+            WidgetService.findWidgetById($routeParams["wgid"]).then(function (d) {
+                var w = d.data;
+                w.url = url;
+                WidgetService.updateWidget($routeParams["wgid"], w).then(function () {
+                    $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + $routeParams["wgid"]);
                 });
+            });
         }
     }
 })();
