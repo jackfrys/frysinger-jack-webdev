@@ -28,6 +28,14 @@
         <div ng-switch-when="YOUTUBE">
             <div ng-include src="'views/widget/templates/widget-youtube-edit.view.client.html'"></div>
         </div>
+        <div ng-switch-when="HTML">
+            <div ng-model="model.widget.text"
+                 text-angular
+                 ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+            </div>
+        </div>
     </div>
     <a href ng-click="model.deleteWidget()" class="btn btn-primary btn-lg btn-block btn-danger">Delete</a>
 </div>

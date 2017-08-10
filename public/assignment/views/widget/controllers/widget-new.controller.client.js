@@ -12,6 +12,7 @@
         vm.newHeader = newHeader;
         vm.newYoutube = newYoutube;
         vm.newImage = newImage;
+        vm.newHtml = newHtml;
 
         function newHeader() {
             WidgetService.createWidget(vm.pageId, {"type" : "HEADING"}).then(function (widget) {
@@ -27,6 +28,12 @@
 
         function newImage() {
             WidgetService.createWidget(vm.pageId, {"type" : "IMAGE"}).then(function (widget) {
+                $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widget.data._id);
+            });
+        }
+
+        function newHtml() {
+            WidgetService.createWidget(vm.pageId, {"type" : "HTML"}).then(function (widget) {
                 $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widget.data._id);
             });
         }
