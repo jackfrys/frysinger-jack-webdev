@@ -20,5 +20,10 @@
                 controller: "StopController",
                 controllerAs: "model"
             })
+            .when("/user/:uid", {
+                templateUrl: "views/user.view.client.html",
+                controller: "UserController",
+                controllerAs: "model"
+            })
     }
 })();

@@ -7,6 +7,7 @@ var users = [
 ];
 
 app.get("/api/login", getUserByCredentials);
+app.get("/api/user/:uid", getUserById);
 
 function getUserByCredentials(req, res) {
     var username = req.query.username;
@@ -14,6 +15,16 @@ function getUserByCredentials(req, res) {
 
     for (var u in users) {
         if (users[u].username == username && users[u].password == password) {
+            res.send(users[u]);
+        }
+    }
+}
+
+function getUserById(res, req) {
+    var id = res.params.uid;
+
+    for (var u in users) {
+        if (users[u]._id == id) {
             res.send(users[u]);
         }
     }
