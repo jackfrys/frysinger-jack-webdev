@@ -5,6 +5,11 @@
 
     function FlickrImageSearchController($routeParams, WidgetService, $location, FlickrService) {
         var vm = this;
+        vm.userId = $routeParams["uid"];
+        vm.websiteId = $routeParams["wid"];
+        vm.pageId = $routeParams["pid"];
+        vm.widgetId = $routeParams["wgid"];
+
         vm.searchPhotos = function(searchTerm) {
             FlickrService
                 .searchPhotos(searchTerm)
@@ -24,7 +29,7 @@
                 var w = d.data;
                 w.url = url;
                 WidgetService.updateWidget($routeParams["wgid"], w).then(function () {
-                    $location.path("/user/" + $routeParams["uid"] + "/website/" + $routeParams["wid"] + "/page/" + $routeParams["pid"] + "/widget/" + $routeParams["wgid"]);
+                    $location.path("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + vm.widgetId);
                 });
             });
         }
