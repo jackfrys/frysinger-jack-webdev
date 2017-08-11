@@ -9,7 +9,7 @@
         vm.user = {};
 
         function login() {
-            $http.get("/api/login?username=" + vm.user.username + "&password=" + vm.user.password).then(function (res) {
+            $http.get("/api/project/login?username=" + vm.user.username + "&password=" + vm.user.password).then(function (res) {
                 var user = res.data;
                 $location.path("/user/" + user._id);
             })

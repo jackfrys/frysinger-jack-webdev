@@ -4,8 +4,36 @@
     </div>
     <div ng-switch-when="PARENT">
         You are a parent.
+
+        <h1>Routes:</h1>
+        <ul>
+        <div ng-repeat="route in model.routes">
+            <li>
+            <ol>
+            <div ng-repeat="stop in route.steps">
+                <li>{{stop.type}} at {{stop.place}}</li>
+            </div>
+            </ol>
+            <div ng-if="route.children">This route is being shared with children.</div>
+            <div ng-if="route.public">This route is being shared pulicly.</div>
+            </li>
+        </div>
+        </ul>
     </div>
     <div ng-switch-when="TRAVELER">
-        You are a traveler.
+        You are a traveler. Your parent has shared these routes with you.
+
+        <h1>Routes</h1>
+        <ul>
+            <div ng-repeat="route in model.parentRoutes">
+                <li>
+                    <ol>
+                        <div ng-repeat="stop in route.steps">
+                            <li>{{stop.type}} at {{stop.place}}</li>
+                        </div>
+                    </ol>
+                </li>
+            </div>
+        </ul>
     </div>
 </div>

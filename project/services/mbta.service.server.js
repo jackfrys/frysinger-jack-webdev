@@ -1,8 +1,8 @@
 var app = require("../../express");
 var request = require('request');
 
-app.get("/api/stops", allStops);
-app.get("/api/predictions/:stopId", predictions);
+app.get("/api/project/stops", allStops);
+app.get("/api/project/predictions/:stopId", predictions);
 
 function allStops(req, res) {
     request("http://realtime.mbta.com/developer/api/v2/routes?api_key=wX9NwuHnZU2ToO7GmGR9uw&format=json", function (err, result, body) {

@@ -8,7 +8,7 @@
         vm.submit = submit;
         vm.search = "";
 
-        $http.get("/api/stops").then(function (resp) {
+        $http.get("/api/project/stops").then(function (resp) {
             vm.stops = resp.data;
         });
 

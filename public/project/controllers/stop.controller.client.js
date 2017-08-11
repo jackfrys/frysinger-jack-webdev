@@ -5,7 +5,7 @@
 
     function StopController($http, $routeParams) {
         var vm = this;
-        $http.get("/api/predictions/" + $routeParams["stopId"]).then(function (resp) {
+        $http.get("/api/project/predictions/" + $routeParams["stopId"]).then(function (resp) {
             vm.predictions = resp.data;
         })
     }
