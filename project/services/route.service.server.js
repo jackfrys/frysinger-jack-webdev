@@ -11,6 +11,7 @@ var routes = [
 app.get("/api/project/route/:rid", getRouteForId);
 app.put("/api/project/route/:rid", updateRoute);
 app.get("/api/project/user/:uid/routes", routesForUser);
+app.get("/api/project/routes", allRoutes);
 
 function getRouteForId(req, res) {
     var routeId = req.params.rid;
@@ -44,4 +45,8 @@ function routesForUser(req, res) {
         }
     }
     res.send(rs);
+}
+
+function allRoutes(req, res) {
+    res.send(routes);
 }

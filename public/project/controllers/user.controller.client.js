@@ -16,7 +16,11 @@
                 $http.get("/api/project/user/" + p + "/routes").then(function (ro) {
                     vm.parentRoutes = ro.data;
                 })
-            })
+            });
+
+            $http.get("/api/project/routes").then(function (r) {
+                vm.allRoutes = r.data;
+            });
         })
     }
 })();
