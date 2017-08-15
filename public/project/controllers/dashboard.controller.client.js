@@ -6,6 +6,6 @@
     function DashboardController() {
         var vm = this;
 
-        vm.user = {role: "PARENT"};
+        vm.user = {role: "TRAVELER"};
     }
 })();

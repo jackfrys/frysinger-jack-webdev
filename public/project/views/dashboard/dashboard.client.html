@@ -1,4 +1,4 @@
-<div class="container-fluid jcf-content">
+<div class="container-fluid">
     <div ng-switch="model.user.role">
         <div ng-switch-when="UNAUTH">
             <div ng-include src="'views/dashboard/unauth-dashboard.html'"></div>
@@ -10,7 +10,7 @@
             <div ng-include src="'views/dashboard/parent-dashboard.html'"></div>
         </div>
         <div ng-switch-when="TRAVELER">
-            <div ng-include src="'traveler-dashboard.html'"></div>
+            <div ng-include src="'views/dashboard/traveler-dashboard.html'"></div>
         </div>
     </div>
 </div>
