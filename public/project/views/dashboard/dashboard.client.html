@@ -1,0 +1,16 @@
+<div class="container-fluid jcf-content">
+    <div ng-switch="model.user.role">
+        <div ng-switch-when="UNAUTH">
+            <div ng-include src="'views/dashboard/unauth-dashboard.html'"></div>
+        </div>
+        <div ng-switch-when="ADMIN">
+            <div ng-include src="'views/dashboard/admin-dashboard.html'"></div>
+        </div>
+        <div ng-switch-when="PARENT">
+            <div ng-include src="'views/dashboard/parent-dashboard.html'"></div>
+        </div>
+        <div ng-switch-when="TRAVELER">
+            <div ng-include src="'traveler-dashboard.html'"></div>
+        </div>
+    </div>
+</div>

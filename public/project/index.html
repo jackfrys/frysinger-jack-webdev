@@ -3,21 +3,37 @@
 
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
     <script src="app.js"></script>
     <script src="config.js"></script>
-    <script src="controllers/prototype/home.controller.client.js"></script>
-    <script src="controllers/prototype/stop.controller.client.js"></script>
-    <script src="controllers/prototype/login.controller.client.js"></script>
-    <script src="controllers/prototype/user.controller.client.js"></script>
+    <script src="controllers/dashboard.controller.client.js"></script>
 </head>
 
 <body>
 
-<div ng-view></div>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">MBTA Safe Arrival</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a>Home</a></li>
+            <li><a>Routes</a></li>
+            <li><a>Relationships</a></li>
+            <li><a>Log In</a></li>
+            <li><a>Register</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="jcf-content">
+    <div ng-view></div>
+</div>
 
 </body>
 
