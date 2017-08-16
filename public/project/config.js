@@ -11,8 +11,13 @@
                 controllerAs: "model"
             })
             .when("/login", {
-                templateUrl: "views/login.login.client.html",
+                templateUrl: "views/login/login.client.html",
                 controller: "LoginController",
+                controllerAs: "model"
+            })
+            .when("/register", {
+                templateUrl: "views/register/register.view.client.html",
+                controller: "RegisterController",
                 controllerAs: "model"
             })
     }

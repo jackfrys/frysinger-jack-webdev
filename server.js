@@ -13,9 +13,6 @@ require("./test/app");
 require("./assignment/app.js");
 require("./project/app.js");
 
-port = process.env.PORT || 3000;
-app.listen(port);
-
 // var bodyParser = require('body-parser');
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
@@ -32,3 +29,6 @@ app.use(session({
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
+
+port = process.env.PORT || 3000;
+app.listen(port);
