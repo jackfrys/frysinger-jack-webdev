@@ -7,6 +7,6 @@
         var vm = this;
 
         vm.user = {role: "TRAVELER"};
-        vm.routes = [{name: "My route 1", steps: [{place: "place-nuniv", step: "EXIT"}], origin: "Back Bay Station", destination: "Northeastern University"}]
+        vm.routes = [{name: "My route 1", username: "jackfrys", children: true, public: false, steps: [{place: "place-nuniv", step: "EXIT"}], origin: "Back Bay Station", destination: "Northeastern University"}]
     }
 })();
