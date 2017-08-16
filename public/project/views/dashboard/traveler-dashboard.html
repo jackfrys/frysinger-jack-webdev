@@ -1,1 +1,7 @@
-Traveler dashboard
+<h1>My routes</h1>
+
+<ul class="list-group">
+    <div ng-repeat="route in model.routes">
+        <li class="list-group-item">{{route.name}}: {{route.origin}} - {{route.destination}} <a>Begin</a></li>
+    </div>
+</ul>
