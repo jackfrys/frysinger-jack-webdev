@@ -9,6 +9,6 @@ var userSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Traveler"
     }],
-    dateCreated: {type: Data, default: Date.now()}
+    dateCreated: {type: Date, default: Date.now()}
 }, {collection: "user"});
 module.exports = userSchema;

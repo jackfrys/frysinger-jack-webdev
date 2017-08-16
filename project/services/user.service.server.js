@@ -59,11 +59,11 @@ var auth = authorized;
 app.post  ('/api/project/login', passport.authenticate('local'), login);
 app.post  ('/api/project/logout',         logout);
 app.post  ('/api/project/register',       register);
-app.post  ('/api/project/user',     auth, createUser);
+// app.post  ('/api/project/user',     auth, createUser);
 app.get   ('/api/project/loggedin',       loggedin);
-app.get   ('/api/project/user',     auth, findAllUsers);
-app.put   ('/api/project/user/:id', auth, updateUser);
-app.delete('/api/project/user/:id', auth, deleteUser);
+// app.get   ('/api/project/user',     auth, findAllUsers);
+// app.put   ('/api/project/user/:id', auth, updateUser);
+// app.delete('/api/project/user/:id', auth, deleteUser);
 function authorized (req, res, next) {
     if (!req.isAuthenticated()) {
         res.send(401);
@@ -72,7 +72,7 @@ function authorized (req, res, next) {
     }
 };
 
-var userModel = require("../../model/user/user.model.server.js")();
+var userModel = require("../model/user/user.model.server")();
 var LocalStrategy = require('passport-local').Strategy;
 passport.use(new LocalStrategy(localStrategy));
 function localStrategy(username, password, done) {
@@ -119,4 +119,9 @@ function logout(req, res) {
 
 function loggedin(req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');
+}
+
+function register(req, res) {
+    var user = req.user;
+    userModel.createUser(user);
 }

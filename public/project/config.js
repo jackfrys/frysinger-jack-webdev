@@ -10,5 +10,10 @@
                 controller: "DashboardController",
                 controllerAs: "model"
             })
+            .when("/login", {
+                templateUrl: "views/login.login.client.html",
+                controller: "LoginController",
+                controllerAs: "model"
+            })
     }
 })();
