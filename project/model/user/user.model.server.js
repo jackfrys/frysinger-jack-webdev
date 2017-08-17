@@ -11,7 +11,7 @@ userModel.deleteUser = deleteUser;
 module.exports = userModel;
 
 function createUser(user) {
-    return userModel.create({username:user.username, password:user.password});
+    return userModel.create({username:user.username, password:user.password, role:user.role});
 }
 
 function findUserById(userId) {

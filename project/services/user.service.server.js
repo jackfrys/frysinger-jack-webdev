@@ -7,7 +7,7 @@ var userModel = require("../model/user/user.model.server");
 
 var auth = authorized;
 app.post('/api/project/login', passport.authenticate('local'), login);
-app.post('/api/project/logout', logout);
+app.get('/api/project/logout', logout);
 app.post('/api/project/register', register);
 app.post('/api/project/user', auth, createUser);
 app.get('/api/project/loggedin', loggedin);
@@ -29,8 +29,6 @@ function getThisUser(req, res) {
 function updateThisUser(req, res) {
     userModel.updateUser(req.body._id, req.body).then(function () {
         res.send(200);
-    }, function (err) {
-        var v = 10;
     });
 }
 
@@ -86,12 +84,11 @@ function loggedin(req, res) {
 
 function logout(req, res) {
     req.logOut();
-    res.send(200);
+    res.redirect("/project");
 }
 
 function register(req, res) {
     var newUser = req.body;
-    newUser.roles = ['student'];
 
     userModel
         .findUserByUsername(newUser.username)

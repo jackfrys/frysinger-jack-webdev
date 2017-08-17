@@ -7,10 +7,11 @@
         var vm = this;
         vm.register = register;
 
-        function register(user) {
+        function register(user, role) {
             if(user.password != user.password2 || !user.password || !user.password2) {
                 vm.error = "Your passwords don't match";
             } else {
+                user.role = role;
                 $http.post("/api/project/register", user)
                     .then(
                         function(response) {
