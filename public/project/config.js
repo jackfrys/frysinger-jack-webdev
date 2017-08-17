@@ -20,5 +20,10 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
+            .when("/profile", {
+                templateUrl: "views/profile/profile.view.client.html",
+                controller: "ProfileController",
+                controllerAs: "model"
+            })
     }
 })();
