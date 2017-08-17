@@ -32,6 +32,8 @@ passport.deserializeUser(deserializeUser);
 function findUser(req, res) {
     userModel.findUserById(req.params.uid).then(function (user) {
         res.json(user);
+    }, function () {
+        res.json({});
     });
 }
 
