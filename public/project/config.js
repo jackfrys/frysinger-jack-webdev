@@ -25,5 +25,10 @@
                 controller: "ProfileController",
                 controllerAs: "model"
             })
+            .when("/relationships", {
+                templateUrl: "views/relationships/relationships.view.client.html",
+                controller: "RelationshipController",
+                controllerAs: "model"
+            })
     }
 })();

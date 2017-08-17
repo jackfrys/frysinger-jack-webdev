@@ -8,6 +8,7 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
+userModel.relationships = relationships;
 module.exports = userModel;
 
 function createUser(user) {
@@ -32,4 +33,8 @@ function updateUser(userId, user) {
 
 function deleteUser(userId) {
     return userModel.findByIdAndRemove(userId);
+}
+
+function relationships(userId) {
+    return userModel.findById(userId).populate("relationships");
 }

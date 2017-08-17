@@ -4,6 +4,7 @@ var mongoose = require("mongoose");
 var app = require("../../express");
 
 var userModel = require("../model/user/user.model.server");
+var relModel = require("../model/relationship/relationship.model.server");
 
 var auth = authorized;
 app.post('/api/project/login', passport.authenticate('local'), login);
@@ -15,10 +16,37 @@ app.get('/api/project/loggedin', loggedin);
 app.get("/api/project/user", auth, getThisUser);
 app.put("/api/project/user", auth, updateThisUser);
 app.delete("/api/project/user", auth, deleteThisUser);
+app.get("/api/project/relationships", auth, relationships);
+app.post("/api/project/relationships", auth, newRelationship);
+app.delete("/api/project/relationships", auth, deleteRelationship);
 
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
+
+function newRelationship(req, res) {
+    relModel.addRelationship(req.user.id, req.body.uid).then(function () {
+        res.send(200);
+    })
+}
+
+function relationships(req, res) {
+    if (req.user.role == "PARENT") {
+        relModel.relForParent(req.user.id).then(function (rel) {
+            res.json(rel);
+        });
+    } else {
+        relModel.relForTraveler(req.user.id).then(function (rel) {
+            res.json(rel);
+        });
+    }
+}
+
+function deleteRelationship(req, res) {
+    relModel.deleteRel(req.user.id, req.body.id).then(function (re) {
+        res.send(200);
+    });
+}
 
 function getThisUser(req, res) {
     userModel.findUserById(req.user.id).then(function (user) {

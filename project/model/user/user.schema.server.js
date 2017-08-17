@@ -6,7 +6,7 @@ var userSchema = mongoose.Schema({
     lastName: String,
     email: String,
     role: String,
-    travelers: [{
+    relationships: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Traveler"
     }],
