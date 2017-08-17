@@ -20,6 +20,8 @@ app.get("/api/project/relationships", auth, relationships);
 app.post("/api/project/relationships", auth, newRelationship);
 app.delete("/api/project/relationships", auth, deleteRelationship);
 
+module.exports = auth;
+
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);

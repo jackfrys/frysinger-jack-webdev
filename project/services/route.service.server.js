@@ -1,52 +1,40 @@
 var app = require("../../express");
-var request = require("request");
+var mongoose = require("mongoose");
+var routeModel = require("../model/route/route.model.server");
+var userModel = require("../model/relationship/relationship.model.server");
+var auth = require("./user.service.server");
 
-var routes = [
-    {_id:1, owner:2, public:false, children: true, steps:[
-        {_id:1, order:1, type:"BOARD", place:"place-nuniv"},
-        {_id:1, order:2, type:"END", place:"place-heath"}
-    ]}
-];
+app.get("/api/project/routes", auth, routes);
+app.post("/api/project/routes", auth, addRoute);
 
-app.get("/api/project/route/:rid", getRouteForId);
-app.put("/api/project/route/:rid", updateRoute);
-app.get("/api/project/user/:uid/routes", routesForUser);
-app.get("/api/project/routes", allRoutes);
+function routes(req, res) {
+    var user = req.user;
 
-function getRouteForId(req, res) {
-    var routeId = req.params.rid;
-    var rs = [];
-    for (var r in routes) {
-        if (routes[r]._id == routeId) {
-            rs.push(routes[r]);
-        }
+    if (user.role == "PARENT") {
+        routeModel.routesForParent(user.id).then(function (routes) {
+            res.json(routes);
+        });
     }
-    res.send(rs);
+
+    userModel.relForTraveler(user.id).then(function (rels) {
+        var parentId = rels[0].id;
+        routeModel.routesForParentChildren(parentId).then(function (ro) {
+            res.json(ro);
+        });
+    });
 }
 
-function updateRoute(req, res) {
-    var rs = [];
-    for (var r in routes) {
-        if (routes[r]._id == req.params.rid) {
-            rs.push(req.body);
-        } else {
-            rs.push(routes[r]);
-        }
-    }
-    routes = rs;
-    res.send(200);
+function addRoute(req, res) {
+    var r = req.body;
+    var u = req.user;
+    r.parent = mongoose.Schema.Types.ObjectId(u.id);
+    routeModel.createRoute(r).then(function () {
+        res.send(200);
+    });
 }
 
-function routesForUser(req, res) {
-    var rs = [];
-    for (var r in routes) {
-        if (routes[r].owner == req.params.uid) {
-            rs.push(routes[r]);
-        }
-    }
-    res.send(rs);
-}
-
-function allRoutes(req, res) {
-    res.send(routes);
+function editRoute(req, res) {
+    routeModel.updateRoute(req.body.id, req.body).then(function () {
+        res.send(200);
+    });
 }
