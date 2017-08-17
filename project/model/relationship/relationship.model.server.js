@@ -26,7 +26,7 @@ function relForParent(parentId) {
 }
 
 function relForTraveler(travelerId) {
-    return relModel.find({traveler: mongoose.Schema.Types.ObjectId(travelerId)});
+    return relModel.find({traveler: travelerId});
 }
 
 function allRels() {
