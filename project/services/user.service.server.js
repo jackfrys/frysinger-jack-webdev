@@ -20,6 +20,12 @@ app.get("/api/project/relationships", auth, relationships);
 app.post("/api/project/relationships", auth, newRelationship);
 app.delete("/api/project/relationships", auth, deleteRelationship);
 
+app.get("/api/project/rels", function (req, res) {
+    relModel.allRels().then(function (r) {
+        res.json(r);
+    })
+});
+
 module.exports = auth;
 
 passport.use(new LocalStrategy(localStrategy));

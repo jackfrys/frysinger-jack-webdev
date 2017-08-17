@@ -8,11 +8,12 @@ relModel.addRelationship = addRelationship;
 relModel.deleteRel = deleteRel;
 relModel.relForParent = relForParent;
 relModel.relForTraveler = relForTraveler;
+relModel.allRels = allRels;
 module.exports = relModel;
 
 function addRelationship(parentId, travelerUsername) {
     return userModel.findOne({username:travelerUsername}).then(function (user) {
-        return relModel.create({parent: mongoose.Schema.Types.ObjectId(parentId), traveler: user.id});
+        return relModel.create({parent: parentId, traveler: user.id});
     });
 }
 
@@ -26,4 +27,8 @@ function relForParent(parentId) {
 
 function relForTraveler(travelerId) {
     return relModel.find({traveler: mongoose.Schema.Types.ObjectId(travelerId)});
+}
+
+function allRels() {
+    return relModel.find({});
 }

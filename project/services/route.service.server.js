@@ -16,14 +16,19 @@ function routes(req, res) {
         routeModel.routesForParent(user.id).then(function (routes) {
             res.json(routes);
         });
-    }
+    } else {
 
-    userModel.relForTraveler(user.id).then(function (rels) {
-        var parentId = rels[0].id;
-        routeModel.routesForParentChildren(parentId).then(function (ro) {
-            res.json(ro);
+        userModel.relForTraveler(user.id).then(function (rels) {
+            if (rels.length == 0) {
+                res.json([]);
+                return;
+            }
+            var parentId = rels[0].id;
+            routeModel.routesForParentChildren(parentId).then(function (ro) {
+                res.json(ro);
+            });
         });
-    });
+    }
 }
 
 function addRoute(req, res) {
