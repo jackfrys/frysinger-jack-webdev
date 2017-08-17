@@ -4,6 +4,7 @@ var userSchema = mongoose.Schema({
     password: String,
     firstName: String,
     lastName: String,
+    email: String,
     role: String,
     travelers: [{
         type: mongoose.Schema.Types.ObjectId,
