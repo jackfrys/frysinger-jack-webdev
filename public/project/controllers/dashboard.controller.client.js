@@ -9,6 +9,9 @@
         $http.get("/api/project/user").then(function (u) {
             vm.user = u.data;
         });
-        vm.routes = [{name: "My route 1", username: "jackfrys", children: true, public: false, steps: [{place: "place-nuniv", step: "EXIT"}], origin: "Back Bay Station", destination: "Northeastern University"}]
+
+        $http.get("/api/project/routes").then(function (rs) {
+            vm.routes = rs.data;
+        });
     }
 })();

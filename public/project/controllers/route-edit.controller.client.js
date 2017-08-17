@@ -13,7 +13,7 @@
         if (newR) {
             vm.route = {steps:[]};
         } else {
-            $http.get("/api/project/route", $routeParams["rid"]).then(function (route) {
+            $http.get("/api/project/route/" + $routeParams["rid"]).then(function (route) {
                 vm.route = route.data;
             });
         }
@@ -24,12 +24,12 @@
 
         function editRoute() {
             if (newR) {
-                $http.post("/api/project/route", vm.route).then(function () {
+                $http.post("/api/project/routes", vm.route).then(function () {
                     $location.path("/");
                 })
             } else {
                 if ($routeParams) {
-                    $http.put("/api/project/route", vm.route).then(function () {
+                    $http.put("/api/project/routes", vm.route).then(function () {
                         $location.path("/");
                     });
                 }

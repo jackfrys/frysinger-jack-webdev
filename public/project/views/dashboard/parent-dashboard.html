@@ -2,6 +2,6 @@
 
 <ul class="list-group">
     <div ng-repeat="route in model.routes">
-        <li class="list-group-item">{{route.name}}: {{route.origin}} - {{route.destination}} <span ng-if="model.children">Shared with children</span> <a>Begin</a></li>
+        <li class="list-group-item">{{route.name}}: {{route.origin}} - {{route.destination}} <span ng-if="model.children">Shared with children</span> <a>Begin</a> <a href="#!/route/{{route._id}}">Edit</a> </li>
     </div>
 </ul>

@@ -7,6 +7,7 @@ var routeSchema = mongoose.Schema({
     },
     public: {type: Boolean, default: false},
     children: {type: Boolean, default: false},
-    steps: [stepSchema]
+    steps: [stepSchema],
+    name: String
 }, {collection: "route"});
 module.exports = routeSchema;

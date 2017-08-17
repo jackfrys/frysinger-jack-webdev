@@ -6,7 +6,8 @@ var auth = require("./user.service.server");
 
 app.get("/api/project/routes", auth, routes);
 app.post("/api/project/routes", auth, addRoute);
-app.get("/api/project/route", route);
+app.get("/api/project/route/:rid", route);
+app.put("/api/project/routes", editRoute);
 
 function routes(req, res) {
     var user = req.user;
@@ -29,19 +30,19 @@ function addRoute(req, res) {
     var r = req.body;
     var u = req.user;
     r.parent = mongoose.Schema.Types.ObjectId(u.id);
-    routeModel.createRoute(r).then(function () {
+    routeModel.addRoute(r).then(function () {
         res.send(200);
     });
 }
 
 function editRoute(req, res) {
-    routeModel.updateRoute(req.body.id, req.body).then(function () {
+    routeModel.updateRoute(req.body._id, req.body).then(function () {
         res.send(200);
     });
 }
 
 function route(req, res) {
-    routeModel.routeForId(req.body).then(function (r) {
+    routeModel.routeForId(req.params.rid).then(function (r) {
         res.json(r);
     });
 }
