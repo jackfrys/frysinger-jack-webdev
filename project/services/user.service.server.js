@@ -1,52 +1,38 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-// var FacebookStrategy = require('passport-facebook').Strategy;
 var mongoose = require("mongoose");
-
-var userModel = require("../model/user/user.model.server");
 var app = require("../../express");
 
+var userModel = require("../model/user/user.model.server");
+
 var auth = authorized;
-// app.post('/api/project/login', passport.authenticate('local'), login);
-app.post("/api/project/simpleLogin", simpleLogin);
+app.post('/api/project/login', passport.authenticate('local'), login);
 app.post('/api/project/logout', logout);
 app.post('/api/project/register', register);
 app.post('/api/project/user', auth, createUser);
 app.get('/api/project/loggedin', loggedin);
 app.get('/api/project/user', auth, findAllUsers);
-app.get('/api/project/user/:uid', findUser);
 app.put('/api/project/user/:id', auth, updateUser);
 app.delete('/api/project/user/:id', auth, deleteUser);
-
-var users = [
-    {_id: "1", username: "jack", password: "jack", role: "ADMIN"},
-    {_id: "2", username: "parent", password: "parent", role: "PARENT", travelers: [3]},
-    {_id: "3", username: "traveler", password: "traveler", role: "TRAVELER"}
-];
 
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
-function findUser(req, res) {
-    userModel.findUserById(req.params.uid).then(function (user) {
-        res.json(user);
-    }, function () {
-        res.json({});
-    });
-}
-
 function localStrategy(username, password, done) {
     userModel
         .findUserByCredentials(username, password)
         .then(
-            function(user) {
-                if (!user) { return done(null, false); }
+            function (user) {
+                if (!user) {
+                    return done(null, false);
+                }
                 return done(null, user);
             },
-            function(err) {
-                if (err) { return done(err); }
+            function (err) {
+                if (err) {
+                    return done(err);
+                }
             }
         );
 }
@@ -59,10 +45,10 @@ function deserializeUser(user, done) {
     userModel
         .findUserById(user._id)
         .then(
-            function(user){
+            function (user) {
                 done(null, user);
             },
-            function(err){
+            function (err) {
                 done(err, null);
             }
         );
@@ -71,14 +57,6 @@ function deserializeUser(user, done) {
 function login(req, res) {
     var user = req.user;
     res.json(user);
-}
-
-function simpleLogin(req, res) {
-    var username = req.body.username;
-    var password = req.body.password;
-    userModel.findUserByCredentials(username, password).then(function (user) {
-        res.json(user._id);
-    });
 }
 
 function loggedin(req, res) {
@@ -170,8 +148,6 @@ function deleteUser(req, res) {
 }
 
 function updateUser(req, res) {
-    res.send(200);
-    return;
     var newUser = req.body;
     if (!isAdmin(req.user)) {
         delete newUser.roles;
@@ -201,8 +177,6 @@ function updateUser(req, res) {
 }
 
 function createUser(req, res) {
-    res.send(200);
-    return;
     var newUser = req.body;
     if (newUser.roles && newUser.roles.length > 1) {
         newUser.roles = newUser.roles.split(",");
