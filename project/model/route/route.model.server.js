@@ -9,6 +9,7 @@ routeModel.route = route;
 routeModel.updateRoute = updateRoute;
 routeModel.deleteRoute = deleteRoute;
 routeModel.addRoute = addRoute;
+routeModel.routeForId = routeForId;
 
 function routesForParent(parentId) {
     return routeModel.find({parent: mongoose.Schema.Types.ObjectId(parentId)});
@@ -32,6 +33,10 @@ function deleteRoute(routeId) {
 
 function addRoute(route) {
     return routeModel.create(route);
+}
+
+function routeForId(routeId) {
+    return routeModel.findById(routeId);
 }
 
 module.exports = routeModel;

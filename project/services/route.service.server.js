@@ -6,6 +6,7 @@ var auth = require("./user.service.server");
 
 app.get("/api/project/routes", auth, routes);
 app.post("/api/project/routes", auth, addRoute);
+app.get("/api/project/route", route);
 
 function routes(req, res) {
     var user = req.user;
@@ -36,5 +37,11 @@ function addRoute(req, res) {
 function editRoute(req, res) {
     routeModel.updateRoute(req.body.id, req.body).then(function () {
         res.send(200);
+    });
+}
+
+function route(req, res) {
+    routeModel.routeForId(req.body).then(function (r) {
+        res.json(r);
     });
 }

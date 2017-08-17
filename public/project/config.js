@@ -30,5 +30,10 @@
                 controller: "RelationshipController",
                 controllerAs: "model"
             })
+            .when("/route/:rid", {
+                templateUrl: "views/routes/routes.view.client.html",
+                controller: "RouteEditController",
+                controllerAs: "model"
+            })
     }
 })();

@@ -1,0 +1,16 @@
+<div ng-switch="model.user.role">
+    <div ng-switch-when="PARENT">
+        <h1>Edit route</h1>
+        <input placeholder="route name" ng-model="model.route.name">
+        <ol>
+            <div ng-repeat="step in model.route.steps">
+                <li>
+                    <input ng-model="step.place">
+                    <input ng-model="step.action">
+                </li>
+            </div>
+        </ol>
+        <button ng-click="model.updateRoute()">Save Route</button>
+        <button ng-click="model.addStep()">Add Step</button>
+    </div>
+</div>
