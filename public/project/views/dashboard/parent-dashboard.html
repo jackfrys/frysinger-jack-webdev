@@ -5,3 +5,17 @@
         <li class="list-group-item">{{route.name}}: {{route.origin}} - {{route.destination}} <span ng-if="model.children">Shared with children</span> <a>Begin</a> <a href="#!/route/{{route._id}}">Edit</a> </li>
     </div>
 </ul>
+
+<div ng-switch-when="PARENT">
+    <ol>
+        <div ng-repeat="route in model.activeRoutes">
+            <ol>
+                <div ng-repeat="step in model.route.steps">
+                    <li>
+                        {{step.action}} at {{step.place}}. <span ng-if="step.completed">Completed</span>
+                    </li>
+                </div>
+            </ol>
+        </div>
+    </ol>
+</div>

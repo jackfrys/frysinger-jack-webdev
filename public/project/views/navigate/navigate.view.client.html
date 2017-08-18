@@ -1,0 +1,24 @@
+<div ng-switch="model.user.role">
+    <div ng-switch-when="TRAVELER">
+        <ol>
+            <div ng-repeat="step in model.route.steps">
+                <li>
+                    {{step.action}} at {{step.place}}. <a href ng-click="model.completed(step)">Mark Complete</a>
+                </li>
+            </div>
+        </ol>
+    </div>
+    <div ng-switch-when="PARENT">
+        <ol>
+            <div ng-repeat="route in model.routes">
+                <ol>
+                    <div ng-repeat="step in model.route.steps">
+                        <li>
+                            {{step.action}} at {{step.place}}. <span ng-if="step.completed">Completed</span>
+                        </li>
+                    </div>
+                </ol>
+            </div>
+        </ol>
+    </div>
+</div>

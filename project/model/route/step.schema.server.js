@@ -6,5 +6,6 @@ var routeSchema = mongoose.Schema({
     },
     place: String,
     action: String,
+    completed: {type: Boolean, default: false}
 }, {collection: "route"});
 module.exports = routeSchema;

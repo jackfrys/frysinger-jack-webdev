@@ -1,6 +1,7 @@
 var app = require("../../express");
 var mongoose = require("mongoose");
 var routeModel = require("../model/route/route.model.server");
+var um = require("../model/user/user.model.server");
 var userModel = require("../model/relationship/relationship.model.server");
 var auth = require("./user.service.server");
 
@@ -8,6 +9,14 @@ app.get("/api/project/routes", auth, routes);
 app.post("/api/project/routes", auth, addRoute);
 app.get("/api/project/route/:rid", route);
 app.put("/api/project/routes", editRoute);
+
+app.post("/api/project/markActive", auth, markActive);
+
+function markActive(req, res) {
+    um.activeRoute(req.user.id, req.body).then(function () {
+        res.send(200);
+    });
+}
 
 function routes(req, res) {
     var user = req.user;

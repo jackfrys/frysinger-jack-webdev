@@ -9,6 +9,8 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.relationships = relationships;
+userModel.activeRoute = activeRoute;
+
 module.exports = userModel;
 
 function createUser(user) {
@@ -37,4 +39,8 @@ function deleteUser(userId) {
 
 function relationships(userId) {
     return userModel.findById(userId).populate("relationships");
+}
+
+function activeRoute(userId, route) {
+    return userModel.findByIdAndUpdate(userId, {$set:{activeRoute:route}});
 }

@@ -2,6 +2,19 @@
 
 <ul class="list-group">
     <div ng-repeat="route in model.routes">
-        <li class="list-group-item">{{route.name}}: {{route.origin}} - {{route.destination}} <a>Begin</a></li>
+        <li class="list-group-item">{{route.name}}: {{route.origin}} - {{route.destination}} <a ng-click="model.markActive(route)">Begin</a></li>
     </div>
 </ul>
+
+<h1>Active Route</h1>
+<div ng-switch="model.user.role">
+    <div ng-switch-when="TRAVELER">
+        <ol>
+            <div ng-repeat="step in model.user.activeRoute.steps">
+                <li>
+                    {{step.action}} at {{step.place}}. <a href ng-click="model.markComplete(step)">Mark Complete</a> <span ng-if="step.completed">completed</span>
+                </li>
+            </div>
+        </ol>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var routeSchema = require("../route/route.schema.server");
 var userSchema = mongoose.Schema({
     username: String,
     password: String,
@@ -10,6 +11,7 @@ var userSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Traveler"
     }],
-    dateCreated: {type: Date, default: Date.now()}
+    dateCreated: {type: Date, default: Date.now()},
+    activeRoute: {type: routeSchema, default: {}}
 }, {collection: "user"});
 module.exports = userSchema;
