@@ -24,5 +24,24 @@
         <div ng-switch-when="UNAUTH">
             Parents can use MBTA Safe Arrival to connect with the little travelers in their lives. We present them with an easy-to-follow route plans of your creation, and we report back on their progress as they complete their journey.
         </div>
+
+        <div ng-switch-when="ADMIN">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <th>Parent</th>
+                    <th>Child</th>
+                    <th>Delete</th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="rel in model.rels">
+                        <td>{{rel.parentName}}</td>
+                        <td>{{rel.username}}</td>
+                        <td><button class="btn btn-primary" ng-click="model.deleteRel(rel)">Delete</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

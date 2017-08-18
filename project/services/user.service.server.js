@@ -82,6 +82,10 @@ function relationships(req, res) {
         relModel.relForParent(req.user.id).then(function (rel) {
             res.json(rel);
         });
+    } else if (req.user.role == "ADMIN") {
+        relModel.allRels().then(function (r) {
+            res.json(r);
+        });
     } else {
         relModel.relForTraveler(req.user.id).then(function (rel) {
             res.json(rel);

@@ -22,6 +22,9 @@
                 var rel = vm.rels[r];
                 $http.get("/api/user/" + rel.traveler).then(function (that) {
                     rel.username = that.data.username;
+                });
+                $http.get("/api/user/" + rel.parent).then(function (that) {
+                    rel.parentName = that.data.username;
                 })
             }
         });
@@ -35,6 +38,9 @@
                         var rel = vm.rels[r];
                         $http.get("/api/user/" + rel.traveler).then(function (that) {
                             rel.username = that.data.username;
+                        });
+                        $http.get("/api/user/" + rel.parent).then(function (that) {
+                            rel.parentName = that.data.username;
                         })
                     }
                 });
@@ -53,7 +59,10 @@
                             var rel = vm.rels[r];
                             $http.get("/api/user/" + rel.traveler).then(function (that) {
                                 rel.username = that.data.username;
-                            })
+                            });
+                            $http.get("/api/user/" + rel.parent).then(function (that) {
+                                rel.parentName = that.data.username;
+                            });
                         }
                     });
                 })
