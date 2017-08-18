@@ -9,6 +9,7 @@
 
         vm.editRoute = editRoute;
         vm.addStep = addStep;
+        vm.deleteRoute = deleteRoute;
 
         if (newR) {
             vm.route = {steps:[{}, {}]};
@@ -38,6 +39,12 @@
 
         function addStep() {
             vm.route.steps.push({});
+        }
+
+        function deleteRoute(route) {
+            $http.delete("/api/project/route/del/" + $routeParams["rid"]).then(function () {
+                $location.path("/")
+            });
         }
     }
 })();

@@ -11,6 +11,13 @@ app.get("/api/project/route/:rid", route);
 app.put("/api/project/routes", editRoute);
 
 app.post("/api/project/markActive", auth, markActive);
+app.delete("/api/project/route/del/:rid", deleteRoute);
+
+function deleteRoute(req, res) {
+    routeModel.deleteRoute(req.params.rid).then(function () {
+        res.send(200);
+    });
+}
 
 function markActive(req, res) {
     um.activeRoute(req.user.id, req.body).then(function () {
