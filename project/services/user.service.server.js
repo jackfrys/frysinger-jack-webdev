@@ -18,7 +18,7 @@ app.put("/api/project/user", auth, updateThisUser);
 app.delete("/api/project/user", auth, deleteThisUser);
 app.get("/api/project/relationships", auth, relationships);
 app.post("/api/project/relationships", auth, newRelationship);
-app.delete("/api/project/relationships", auth, deleteRelationship);
+app.delete("/api/project/relationships/:rid", deleteRelationship);
 
 app.post("/api/user/:uid", user);
 
@@ -59,7 +59,7 @@ function relationships(req, res) {
 }
 
 function deleteRelationship(req, res) {
-    relModel.deleteRel(req.user.id, req.body.id).then(function (re) {
+    relModel.deleteRel(req.params.rid).then(function (re) {
         res.send(200);
     });
 }

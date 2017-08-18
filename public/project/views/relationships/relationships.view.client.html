@@ -1,14 +1,22 @@
 <div class="container-fluid">
     <div ng-switch="model.user.role">
         <div ng-switch-when="PARENT">
-            <input placeholder="add relationship with username" ng-model="model.newRel.uid">
-            <button class="btn btn-block btn-primary" ng-click="model.addRel()">Add Relationship</button>
-            <ul class="list-group">
-                <div ng-repeat="rel in model.rels">
-                    <li class="list-group-item">{{rel.username}} - <a href ng-click="model.deleteRel(rel)">Remove</a>
-                    </li>
-                </div>
-            </ul>
+            <input placeholder="username" ng-model="model.newRel.uid">
+            <button class="btn btn-primary" ng-click="model.addRel()">Add Child Traveler</button>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <th>Name</th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="rel in model.rels">
+                        <td>{{rel.username}}</td>
+                        <td><a class="btn btn-danger pull-right" ng-click="model.deleteRel(rel)">Delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div ng-switch-when="UNAUTH">

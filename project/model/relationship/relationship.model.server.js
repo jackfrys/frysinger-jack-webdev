@@ -17,8 +17,8 @@ function addRelationship(parentId, travelerUsername) {
     });
 }
 
-function deleteRel(parentId, travelerId) {
-    return relModel.findOneAndRemove({parent: mongoose.Schema.Types.ObjectId(parentId), traveler: mongoose.Schema.Types.ObjectId(travelerId)})
+function deleteRel(id) {
+    return relModel.findByIdAndRemove(id);
 }
 
 function relForParent(parentId) {
