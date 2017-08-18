@@ -7,6 +7,14 @@
         var vm = this;
         vm.register = register;
 
+        vm.logout = logout;
+        function logout() {
+            $http.get("/api/project/logout").then(function () {
+                vm.user = {role:"UNAUTH"};
+                $location.path("/");
+            })
+        }
+
         function register(user, role) {
             if(user.password != user.password2 || !user.password || !user.password2) {
                 vm.error = "Your passwords don't match";

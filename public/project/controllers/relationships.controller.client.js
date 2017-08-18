@@ -3,11 +3,19 @@
         .module("MBTASafe")
         .controller("RelationshipController", RelationshipController);
 
-    function RelationshipController($http) {
+    function RelationshipController($http, $location) {
         var vm = this;
         vm.deleteRel = deleteRel;
         vm.newRel = {};
         vm.addRel = addRel;
+
+        vm.logout = logout;
+        function logout() {
+            $http.get("/api/project/logout").then(function () {
+                vm.user = {role:"UNAUTH"};
+                $location.path("/");
+            })
+        }
 
         $http.get("/api/project/user").then(function (d) {
             vm.user = d.data;

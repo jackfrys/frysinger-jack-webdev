@@ -14,6 +14,14 @@
         vm.searchText = "";
         vm.stations = ["hi", "bye"];
 
+        vm.logout = logout;
+        function logout() {
+            $http.get("/api/project/logout").then(function () {
+                vm.user = {role:"UNAUTH"};
+                $location.path("/");
+            })
+        }
+
         if (newR) {
             vm.route = {steps: [{}, {}]};
         } else {

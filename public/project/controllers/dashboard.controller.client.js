@@ -8,6 +8,7 @@
 
         vm.markActive = markActive;
         vm.markComplete = markComplete;
+        vm.logout = logout;
 
         $http.get("/api/project/user").then(function (u) {
             vm.user = u.data;
@@ -40,6 +41,13 @@
         function markComplete(step) {
             step.completed = !step.completed;
             $http.put("/api/project/user", vm.user);
+        }
+
+        function logout() {
+            $http.get("/api/project/logout").then(function () {
+                vm.user = {role:"UNAUTH"};
+                $location.path("/");
+            })
         }
     }
 })();

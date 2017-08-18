@@ -163,7 +163,7 @@ function loggedin(req, res) {
 
 function logout(req, res) {
     req.logOut();
-    res.redirect("/project");
+    res.send(200);
 }
 
 function register(req, res) {

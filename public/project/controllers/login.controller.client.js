@@ -9,6 +9,14 @@
         vm.user = {};
         vm.login = login;
 
+        vm.logout = logout;
+        function logout() {
+            $http.get("/api/project/logout").then(function () {
+                vm.user = {role:"UNAUTH"};
+                $location.path("/");
+            })
+        }
+
         function login() {
             $http.post("/api/project/login", vm.user).then(function (user) {
                 $rootScope.user = user.data;
