@@ -13,7 +13,7 @@ routeModel.routeForId = routeForId;
 routeModel.allRoutes = allRoutes;
 
 function routesForParent(parentId) {
-    return routeModel.find({parent: mongoose.Schema.Types.ObjectId(parentId)});
+    return routeModel.find({parent: parentId});
 }
 
 function routesForParentChildren(parentId) {
