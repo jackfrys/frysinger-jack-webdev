@@ -54,7 +54,7 @@ function routes(req, res) {
 function addRoute(req, res) {
     var r = req.body;
     var u = req.user;
-    r.parent = mongoose.Schema.Types.ObjectId(u.id);
+    r.parent = u.id;
     r.un = req.user.username;
     routeModel.addRoute(r).then(function () {
         res.send(200);
