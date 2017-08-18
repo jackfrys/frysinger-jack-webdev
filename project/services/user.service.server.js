@@ -32,11 +32,19 @@ app.get("/api/project/rels", function (req, res) {
     })
 });
 
+app.get("/api/project/createAdmin", createAdmin);
+
 module.exports = auth;
 
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
+
+function createAdmin(req, res) {
+    userModel.createUser({username:req.query.username, password:req.query.password, role:"ADMIN"}).then(function () {
+        res.send(200);
+    });
+}
 
 function findUn(req, res) {
     userModel.findUserByUsername(req.params.un).then(function (u) {

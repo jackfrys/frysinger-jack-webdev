@@ -25,6 +25,10 @@ function routes(req, res) {
         routeModel.routesForParent(user.id).then(function (routes) {
             res.json(routes);
         });
+    } else if (user.role == "ADMIN") {
+        routeModel.allRoutes().then(function (rs) {
+            res.json(rs);
+        });
     } else {
 
         userModel.relForTraveler(user.id).then(function (rels) {
@@ -44,6 +48,7 @@ function addRoute(req, res) {
     var r = req.body;
     var u = req.user;
     r.parent = mongoose.Schema.Types.ObjectId(u.id);
+    r.un = req.user.username;
     routeModel.addRoute(r).then(function () {
         res.send(200);
     });

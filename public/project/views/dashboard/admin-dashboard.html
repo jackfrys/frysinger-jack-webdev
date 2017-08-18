@@ -1,7 +1,26 @@
-<h1>All routes</h1>
+<h1>All Routes</h1>
 
-<ul class="list-group">
-    <div ng-repeat="route in model.routes">
-        <li class="list-group-item">{{route.name}}: {{route.origin}} - {{route.destination}} owner: {{route.username}}, <span ng-if="route.public">shared publicly</span> <a>Delete</a></li>
-    </div>
-</ul>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <th>Name</th>
+        <th>Owner</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Shared with children</th>
+        <th>Shared with public</th>
+        <!--<th><a href="#!/route/new" class="btn btn-primary">Add Route</a></th>-->
+        </thead>
+        <tbody>
+        <tr ng-repeat="route in model.routes">
+            <td>{{route.name}}</td>
+            <td>{{route.un}}</td>
+            <td>{{route.origin}}</td>
+            <td>{{route.destination}}</td>
+            <td><span ng-if="route.children">Yes</span></td>
+            <td><span ng-if="route.public">Yes</span></td>
+            <td><a class="btn btn-danger" href="#!/route/{{route._id}}">Edit</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

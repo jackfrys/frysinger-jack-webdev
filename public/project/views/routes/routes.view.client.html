@@ -35,5 +35,41 @@
             <button class="btn btn-danger" ng-click="model.deleteRoute()">Delete Route</button>
             </p>
         </div>
+
+        <div ng-switch-when="ADMIN">
+            <h2>Edit Route</h2>
+            <p><input placeholder="route name" ng-model="model.route.name"></p>
+
+            <p>
+                <input type="checkbox" ng-model="model.route.children" name="share with children" id="ckbx">
+                <label for="ckbx">Shared with children</label>
+            </p>
+
+            <p>
+                <input type="checkbox" ng-model="model.route.public" name="share with public" id="ckbx2">
+                <label for="ckbx2">Shared with public</label>
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <th>Place</th>
+                    <th>Action</th>
+                    <th><button class="btn btn-primary" ng-click="model.addStep()">Add Step</button></th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="step in model.route.steps">
+                        <td><input ng-model="step.place"></td>
+                        <td><input ng-model="step.action"></td>
+                        <td><button class="btn btn-danger" ng-click="model.addStep()">Delete Step</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                <button class="btn btn-primary" ng-click="model.editRoute()">Save Route</button>
+                <button class="btn btn-danger" ng-click="model.deleteRoute()">Delete Route</button>
+            </p>
+        </div>
     </div>
 </div>

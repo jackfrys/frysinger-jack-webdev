@@ -5,6 +5,7 @@ var routeSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         rel: "User"
     },
+    un: String,
     public: {type: Boolean, default: false},
     children: {type: Boolean, default: false},
     steps: [stepSchema],
