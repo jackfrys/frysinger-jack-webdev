@@ -13,6 +13,12 @@ app.put("/api/project/routes", editRoute);
 app.post("/api/project/markActive", auth, markActive);
 app.delete("/api/project/route/del/:rid", deleteRoute);
 
+app.get("/api/project/allroutes", function (req, res) {
+    routeModel.allRoutes().then(function (r) {
+        res.json(r);
+    });
+});
+
 function deleteRoute(req, res) {
     routeModel.deleteRoute(req.params.rid).then(function () {
         res.send(200);
@@ -43,7 +49,7 @@ function routes(req, res) {
                 res.json([]);
                 return;
             }
-            var parentId = rels[0].id;
+            var parentId = rels[0].parent;
             routeModel.routesForParentChildren(parentId).then(function (ro) {
                 res.json(ro);
             });

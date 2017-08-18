@@ -17,7 +17,7 @@ function routesForParent(parentId) {
 }
 
 function routesForParentChildren(parentId) {
-    return routeModel.find({parent: mongoose.Schema.Types.ObjectId(parentId), children: true});
+    return routeModel.find({parent: parentId, children: true});
 }
 
 function route(routeId) {
