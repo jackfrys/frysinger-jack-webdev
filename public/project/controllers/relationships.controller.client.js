@@ -43,17 +43,20 @@
         }
 
         function addRel() {
-            $http.post("/api/project/relationships", vm.newRel).then(function () {
-                $http.get("/api/project/relationships").then(function (d) {
-                    vm.rels = d.data;
+            $http.get("/api/project/user/" + vm.newRel.uid).then(function (us) {
+                vm.newRel.uid = "";
+                $http.post("/api/project/relationships/" + us.data._id).then(function () {
+                    $http.get("/api/project/relationships").then(function (d) {
+                        vm.rels = d.data;
 
-                    for (var r in vm.rels) {
-                        var rel = vm.rels[r];
-                        $http.get("/api/user/" + rel.traveler).then(function (that) {
-                            rel.username = that.data.username;
-                        })
-                    }
-                });
+                        for (var r in vm.rels) {
+                            var rel = vm.rels[r];
+                            $http.get("/api/user/" + rel.traveler).then(function (that) {
+                                rel.username = that.data.username;
+                            })
+                        }
+                    });
+                })
             })
         }
     }
