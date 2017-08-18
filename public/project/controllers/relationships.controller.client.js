@@ -11,6 +11,8 @@
 
         $http.get("/api/project/user").then(function (d) {
             vm.user = d.data;
+        }, function () {
+            vm.user = {role:"UNAUTH"};
         });
 
         $http.get("/api/project/relationships").then(function (d) {

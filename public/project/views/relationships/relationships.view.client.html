@@ -1,11 +1,18 @@
-<div ng-switch="model.user.role">
-    <div ng-switch-when="PARENT">
-        <input placeholder="add relationship with username" ng-model="model.newRel.uid">
-        <button class="btn btn-block btn-primary" ng-click="model.addRel()">Add Relationship</button>
-        <ul class="list-group">
-            <div ng-repeat="rel in model.rels">
-                <li class="list-group-item">{{rel.username}} - <a href ng-click="model.deleteRel(rel)">Remove</a></li>
-            </div>
-        </ul>
+<div class="container-fluid">
+    <div ng-switch="model.user.role">
+        <div ng-switch-when="PARENT">
+            <input placeholder="add relationship with username" ng-model="model.newRel.uid">
+            <button class="btn btn-block btn-primary" ng-click="model.addRel()">Add Relationship</button>
+            <ul class="list-group">
+                <div ng-repeat="rel in model.rels">
+                    <li class="list-group-item">{{rel.username}} - <a href ng-click="model.deleteRel(rel)">Remove</a>
+                    </li>
+                </div>
+            </ul>
+        </div>
+
+        <div ng-switch-when="UNAUTH">
+            Parents can use MBTA Safe Arrival to connect with the little travelers in their lives. We present them with an easy-to-follow route plans of your creation, and we report back on their progress as they complete their journey.
+        </div>
     </div>
 </div>
