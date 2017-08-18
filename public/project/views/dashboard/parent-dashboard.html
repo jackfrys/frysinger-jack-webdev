@@ -21,16 +21,16 @@
     </table>
 </div>
 
-<div ng-switch-when="PARENT">
-    <ol>
-        <div ng-repeat="route in model.activeRoutes">
-            <ol>
-                <div ng-repeat="step in model.route.steps">
-                    <li>
-                        {{step.action}} at {{step.place}}. <span ng-if="step.completed">Completed</span>
-                    </li>
-                </div>
-            </ol>
-        </div>
-    </ol>
-</div>
+<ol>
+    <div ng-repeat="route in model.activeRoutes">
+        <ol>
+            <div ng-repeat="step in model.route.steps">
+                <li>
+                    {{step.action}} at {{step.place}}. <span ng-if="step.completed">Completed</span>
+                </li>
+            </div>
+        </ol>
+    </div>
+</ol>
+
+<a class="btn btn-primary" href="#!/relationships">Edit Children</a>
