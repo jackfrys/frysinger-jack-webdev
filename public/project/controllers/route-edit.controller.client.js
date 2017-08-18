@@ -11,7 +11,7 @@
         vm.addStep = addStep;
 
         if (newR) {
-            vm.route = {steps:[]};
+            vm.route = {steps:[{}, {}]};
         } else {
             $http.get("/api/project/route/" + $routeParams["rid"]).then(function (route) {
                 vm.route = route.data;
