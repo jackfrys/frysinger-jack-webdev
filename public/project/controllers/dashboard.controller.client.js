@@ -32,12 +32,13 @@
 
         function markActive(route) {
             $http.post("/api/project/markActive", route).then(function () {
+                vm.user.activeRoute = route;
                 $location.path("/");
             });
         }
 
         function markComplete(step) {
-            step.completed = true;
+            step.completed = !step.completed;
             $http.put("/api/project/user", vm.user);
         }
     }

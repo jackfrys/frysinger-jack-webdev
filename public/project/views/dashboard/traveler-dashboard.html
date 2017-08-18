@@ -1,20 +1,42 @@
+<h1>Active Route</h1>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <th>Directions</th>
+        <th>Completed</th>
+        <th>Mark Complete</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="step in model.user.activeRoute.steps">
+            <td>{{step.action}} at {{step.place}}</td>
+            <td><span ng-if="step.completed">Yes</span><span ng-if="!step.completed">-</span></td>
+            <td><button class="btn btn-primary" ng-click="model.markComplete(step)"><span ng-if="step.completed">Undo</span><span ng-if="!step.completed">Mark Completed</span></button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
 <h1>My routes</h1>
 
-<ul class="list-group">
-    <div ng-repeat="route in model.routes">
-        <li class="list-group-item">{{route.name}}: {{route.origin}} - {{route.destination}} <a ng-click="model.markActive(route)">Begin</a></li>
-    </div>
-</ul>
-
-<h1>Active Route</h1>
-<div ng-switch="model.user.role">
-    <div ng-switch-when="TRAVELER">
-        <ol>
-            <div ng-repeat="step in model.user.activeRoute.steps">
-                <li>
-                    {{step.action}} at {{step.place}}. <a href ng-click="model.markComplete(step)">Mark Complete</a> <span ng-if="step.completed">completed</span>
-                </li>
-            </div>
-        </ol>
-    </div>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <th>Name</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th></th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="route in model.routes">
+            <td>{{route.name}}</td>
+            <td>{{route.origin}}</td>
+            <td>{{route.destination}}</td>
+            <td>
+                <button class="btn btn-primary" ng-click="model.markActive(route)">Begin</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
