@@ -10,8 +10,13 @@ userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.relationships = relationships;
 userModel.activeRoute = activeRoute;
+userModel.allUsers = allUsers;
 
 module.exports = userModel;
+
+function allUsers() {
+    return userModel.find({});
+}
 
 function createUser(user) {
     return userModel.create({username:user.username, password:user.password, role:user.role});

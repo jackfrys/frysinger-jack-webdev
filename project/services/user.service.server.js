@@ -20,6 +20,8 @@ app.get("/api/project/relationships", auth, relationships);
 app.post("/api/project/relationships", auth, newRelationship);
 app.delete("/api/project/relationships/:rid", deleteRelationship);
 
+app.get("/api/project/allusers", allusers);
+
 app.post("/api/user/:uid", user);
 
 app.get("/api/project/rels", function (req, res) {
@@ -33,6 +35,12 @@ module.exports = auth;
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
+
+function allusers(req, res) {
+    userModel.allUsers().then(function (re) {
+        res.json(re);
+    });
+}
 
 function user(req, res) {
     userModel.findUserById(req.params.uid).then(function (u) {
