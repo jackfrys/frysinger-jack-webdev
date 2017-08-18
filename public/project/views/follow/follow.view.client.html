@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <h1>Active Route - {{model.user.username}}</h1>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <th>Directions</th>
+            <th>Completed</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="step in model.user.activeRoute.steps">
+                <td>{{step.action}} at {{step.place}}</td>
+                <td><span ng-if="step.completed">Yes</span><span ng-if="!step.completed">No</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

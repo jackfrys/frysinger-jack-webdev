@@ -8,10 +8,12 @@
                 <table class="table table-striped">
                     <thead>
                     <th>Name</th>
+                    <th>Route</th>
                     </thead>
                     <tbody>
                     <tr ng-repeat="rel in model.rels">
                         <td>{{rel.username}}</td>
+                        <td><a class="btn btn-danger pull-right" href="#!/route/follow/{{rel.traveler}}">View Active Route</a></td>
                         <td><a class="btn btn-danger pull-right" ng-click="model.deleteRel(rel)">Delete</a></td>
                     </tr>
                     </tbody>

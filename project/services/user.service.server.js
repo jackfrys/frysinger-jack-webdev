@@ -23,6 +23,7 @@ app.delete("/api/project/relationships/:rid", deleteRelationship);
 app.get("/api/project/user/:un", findUn);
 
 app.get("/api/project/allusers", allusers);
+app.get("/api/project/user/follow/:uid", findUid);
 
 app.post("/api/user/:uid", user);
 
@@ -44,6 +45,12 @@ function createAdmin(req, res) {
     userModel.createUser({username:req.query.username, password:req.query.password, role:"ADMIN"}).then(function () {
         res.send(200);
     });
+}
+
+function findUid(req, res) {
+    userModel.findUserById(req.params.uid).then(function (u) {
+        res.json(u);
+    })
 }
 
 function findUn(req, res) {

@@ -35,6 +35,11 @@
                 controller: "RouteEditController",
                 controllerAs: "model"
             })
+            .when("/route/follow/:uid", {
+                templateUrl: "views/follow/follow.view.client.html",
+                controller: "FollowController",
+                controllerAs: "model"
+            })
             .when("/explore", {
                 templateUrl: "views/explore-mbta/stops.view.client.html",
                 controller: "StopsController",
