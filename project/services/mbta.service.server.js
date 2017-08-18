@@ -18,7 +18,7 @@ function allStops(req, res) {
             }
         }
 
-        stopsForAllRoutes({}, routes, function (s) {
+        stopsForAllRoutes([], routes, function (s) {
             res.send(s);
         })
     })
@@ -40,11 +40,13 @@ function stopsForRoute(routeId, stops, callback) {
         var j = JSON.parse(body);
         for (var s in j.direction[0].stop) {
             var ss = j.direction[0].stop[s];
-            stops[ss["parent_station_name"]] = ss["parent_station"];
+            stops.push({name:ss["parent_station_name"], code:ss["parent_station"]});
+            // stops[ss["parent_station_name"]] = ss["parent_station"];
         }
         for (var s in j.direction[1].stop) {
             var ss = j.direction[1].stop[s];
-            stops[ss["parent_station_name"]] = ss["parent_station"];
+            stops.push({name:ss["parent_station_name"], code:ss["parent_station"]});
+            // stops[ss["parent_station_name"]] = ss["parent_station"];
         }
 
         callback(stops);

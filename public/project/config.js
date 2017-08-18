@@ -35,5 +35,15 @@
                 controller: "RouteEditController",
                 controllerAs: "model"
             })
+            .when("/explore", {
+                templateUrl: "views/explore-mbta/stops.view.client.html",
+                controller: "StopsController",
+                controllerAs: "model"
+            })
+            .when("/explore/:sid", {
+                templateUrl: "views/explore-mbta/stop.view.client.html",
+                controller: "StopController",
+                controllerAs: "model"
+        })
     }
 })();

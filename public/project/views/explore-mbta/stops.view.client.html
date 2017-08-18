@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <input ng-model="model.search" placeholder="stop-name"/>
+    <button ng-click="model.submit()" class="btn btn-primary">Submit</button>
+
+    <div class="multi-list">
+        <ul class="list-group">
+            <div ng-repeat="stop in model.stops">
+                <li class="list-group-item" ng-click="model.show(stop)">{{stop.name}} - {{stop.code}}</li>
+            </div>
+        </ul>
+    </div>
+</div>
