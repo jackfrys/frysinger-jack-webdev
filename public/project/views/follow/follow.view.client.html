@@ -24,7 +24,7 @@
             <tbody>
             <tr ng-repeat="step in model.user.activeRoute.steps">
                 <td>{{step.action}} at {{step.place}}</td>
-                <td><span ng-if="step.completed">Yes</span><span ng-if="!step.completed">No</span></td>
+                <td><span ng-if="step.completed">Yes</span><span ng-if="!step.completed">-</span></td>
             </tr>
             </tbody>
         </table>
