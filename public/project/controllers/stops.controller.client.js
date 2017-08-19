@@ -26,7 +26,7 @@
         }
 
         function show(stop) {
-            $location.path(stop.code);
+            $location.path("/explore/" + stop.code);
         }
     }
 })();

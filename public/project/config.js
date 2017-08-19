@@ -45,7 +45,7 @@
                 controller: "StopsController",
                 controllerAs: "model"
             })
-            .when("/explore/:sid", {
+            .when("/explore/:stopId", {
                 templateUrl: "views/explore-mbta/stop.view.client.html",
                 controller: "StopController",
                 controllerAs: "model"

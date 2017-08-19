@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/project">MBTA Safe Arrival</a>
+            <a class="navbar-brand" href="#!/explore">< Back</a>
         </div>
         <ul class="nav navbar-nav">
             <li><a>Routes</a></li>
@@ -12,8 +12,10 @@
     </div>
 </nav>
 
-<ol>
-    <div ng-repeat="p in model.predictions">
-        <li>{{p.control}} - {{p.line}} - {{p.time}} min</li>
-    </div>
-</ol>
+<div class="container-fluid">
+    <ul class="list-group">
+        <div ng-repeat="p in model.predictions">
+            <li class="list-group-item">{{p.control}} - {{p.line}} - {{p.time}} min</li>
+        </div>
+    </ul>
+</div>
