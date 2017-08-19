@@ -2,6 +2,7 @@ var mongoose = require("mongoose");
 var userSchema = require("./user.schema.server");
 var db = require("../database");
 var userModel = mongoose.model("ProjectUserModel", userSchema);
+userModel.findUserByGoogleId = findUserByGoogleId;
 userModel.createUser = createUser;
 userModel.findUserById = findUserById;
 userModel.findUserByUsername = findUserByUsername;
@@ -13,6 +14,10 @@ userModel.activeRoute = activeRoute;
 userModel.allUsers = allUsers;
 
 module.exports = userModel;
+
+function findUserByGoogleId(googleId) {
+    return userModel.find({google:{id:googleId}});
+}
 
 function allUsers() {
     return userModel.find({});
