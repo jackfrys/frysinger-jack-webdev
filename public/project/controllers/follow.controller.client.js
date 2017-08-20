@@ -3,7 +3,7 @@
         .module("MBTASafe")
         .controller("FollowController", FollowController);
 
-    function FollowController($routeParams, $http) {
+    function FollowController($routeParams, $http, $location) {
         var vm = this;
         var uid = $routeParams["uid"];
 

@@ -26,15 +26,25 @@
         $http.get("/api/project/relationships").then(function (d) {
             vm.rels = d.data;
 
-            for (var r in vm.rels) {
-                var rel = vm.rels[r];
-                $http.get("/api/user/" + rel.traveler).then(function (that) {
-                    rel.username = that.data.username;
-                });
-                $http.get("/api/user/" + rel.parent).then(function (that) {
-                    rel.parentName = that.data.username;
-                })
-            }
+            $http.get("/api/project/allusers").then(function (u) {
+                var usrs = u.data;
+
+                for (var r in vm.rels) {
+                    var rel = vm.rels[r];
+
+                    for (var u in usrs) {
+                        var us = usrs[u];
+
+                        if (us._id + "" == rel.parent + "") {
+                            rel.parentName = us.username;
+                        }
+
+                        if (us._id + "" == rel.traveler + "") {
+                            rel.username = us.username;
+                        }
+                    }
+                }
+            });
         });
 
         function deleteRel(rel) {
@@ -42,15 +52,25 @@
                 $http.get("/api/project/relationships").then(function (d) {
                     vm.rels = d.data;
 
-                    for (var r in vm.rels) {
-                        var rel = vm.rels[r];
-                        $http.get("/api/user/" + rel.traveler).then(function (that) {
-                            rel.username = that.data.username;
-                        });
-                        $http.get("/api/user/" + rel.parent).then(function (that) {
-                            rel.parentName = that.data.username;
-                        })
-                    }
+                    $http.get("/api/project/allusers").then(function (u) {
+                        var usrs = u.data;
+
+                        for (var r in vm.rels) {
+                            var rel = vm.rels[r];
+
+                            for (var u in usrs) {
+                                var us = usrs[u];
+
+                                if (us._id + "" == rel.parent + "") {
+                                    rel.parentName = us.username;
+                                }
+
+                                if (us._id + "" == rel.traveler + "") {
+                                    rel.username = us.username;
+                                }
+                            }
+                        }
+                    });
                 });
             });
 
@@ -63,15 +83,25 @@
                     $http.get("/api/project/relationships").then(function (d) {
                         vm.rels = d.data;
 
-                        for (var r in vm.rels) {
-                            var rel = vm.rels[r];
-                            $http.get("/api/user/" + rel.traveler).then(function (that) {
-                                rel.username = that.data.username;
-                            });
-                            $http.get("/api/user/" + rel.parent).then(function (that) {
-                                rel.parentName = that.data.username;
-                            });
-                        }
+                        $http.get("/api/project/allusers").then(function (u) {
+                            var usrs = u.data;
+
+                            for (var r in vm.rels) {
+                                var rel = vm.rels[r];
+
+                                for (var u in usrs) {
+                                    var us = usrs[u];
+
+                                    if (us._id + "" == rel.parent + "") {
+                                        rel.parentName = us.username;
+                                    }
+
+                                    if (us._id + "" == rel.traveler + "") {
+                                        rel.username = us.username;
+                                    }
+                                }
+                            }
+                        });
                     });
                 })
             })
