@@ -10,14 +10,6 @@ var googleConfig = {
     callbackURL  : process.env.GOOGLE_CALLBACK_URL
 };
 
-app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
-
-app.get('/auth/google/callback',
-    passport.authenticate('google', {
-        successRedirect: '#!/',
-        failureRedirect: '#!/'
-    }));
-
 var userModel = require("../model/user/user.model.server");
 var relModel = require("../model/relationship/relationship.model.server");
 
@@ -49,6 +41,14 @@ app.get("/api/project/rels", function (req, res) {
 });
 
 app.get("/api/project/createAdmin", createAdmin);
+
+app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+app.get('/auth/google/callback',
+    passport.authenticate('google', {
+        successRedirect: '#!/',
+        failureRedirect: '#!/'
+    }));
 
 module.exports = auth;
 
