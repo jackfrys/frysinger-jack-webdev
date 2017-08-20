@@ -3,7 +3,7 @@
         .module("MBTASafe")
         .controller("RouteGalleryController", RouteGalleryController);
 
-    function RouteGalleryController($http) {
+    function RouteGalleryController($http, $location) {
         var vm = this;
 
         $http.get("/api/project/publicroutes").then(function (rs) {
