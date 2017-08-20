@@ -16,6 +16,14 @@
                     rt.destination = rt.steps[rt.steps.length - 1].place;
                 }
             }
-        })
+        });
+
+        vm.logout = logout;
+        function logout() {
+            $http.get("/api/project/logout").then(function () {
+                vm.user = {role:"UNAUTH"};
+                $location.path("/");
+            })
+        }
     }
 })();
