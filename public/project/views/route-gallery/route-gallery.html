@@ -1,0 +1,36 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/project">< Dashboard</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a>Routes</a></li>
+            <li><a href="#!/explore">Explore</a></li>
+            <li><a href="#!/profile">Profile</a></li>
+            <li><a href ng-click="model.logout()">Log Out</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <h2>Public Route Gallery</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <th>Name</th>
+            <th>Owner</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="route in model.routes">
+                <td>{{route.name}}</td>
+                <td>{{route.un}}</td>
+                <td>{{route.origin}}</td>
+                <td>{{route.destination}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

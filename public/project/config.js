@@ -49,6 +49,11 @@
                 templateUrl: "views/explore-mbta/stop.view.client.html",
                 controller: "StopController",
                 controllerAs: "model"
-        })
+            })
+            .when("/gallery", {
+                templateUrl: "views/route-gallery/route-gallery.html",
+                controller: "RouteGalleryController",
+                controllerAs: "model"
+            })
     }
 })();

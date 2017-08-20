@@ -11,6 +11,11 @@ routeModel.deleteRoute = deleteRoute;
 routeModel.addRoute = addRoute;
 routeModel.routeForId = routeForId;
 routeModel.allRoutes = allRoutes;
+routeModel.publicRoutes = publicRoutes;
+
+function publicRoutes() {
+    return routeModel.find({public:true});
+}
 
 function routesForParent(parentId) {
     return routeModel.find({parent: parentId});

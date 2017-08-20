@@ -19,6 +19,14 @@ app.get("/api/project/allroutes", function (req, res) {
     });
 });
 
+app.get("/api/project/publicroutes", publicRoutes);
+
+function publicRoutes(req, res) {
+    routeModel.publicRoutes().then(function (rs) {
+        res.json(rs);
+    });
+}
+
 function deleteRoute(req, res) {
     routeModel.deleteRoute(req.params.rid).then(function () {
         res.send(200);
