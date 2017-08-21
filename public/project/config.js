@@ -55,5 +55,15 @@
                 controller: "RouteGalleryController",
                 controllerAs: "model"
             })
+            .when("/users", {
+                templateUrl: "views/admin-users/all-users.html",
+                controller: "AdminUsers",
+                controllerAs: "model"
+            })
+            .when("/users/:uid" ,{
+                templateUrl: "views/admin-users/admin-one-user.html",
+                controller: "AdminOneUser",
+                controllerAs: "model"
+            })
     }
 })();

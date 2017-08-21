@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#!/users">< All Users</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#!/gallery">Routes</a></li>
+            <li><a href="#!/explore">Explore</a></li>
+            <li><a href="#!/profile">Profile</a></li>
+            <li><a href ng-click="model.logout()">Log Out</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <input ng-model="model.user.username" class="form-control" placeholder="username"/>
+    <input ng-model="model.user.password" class="form-control" placeholder="password" type="password"/>
+    <input ng-model="model.user.email" class="form-control" placeholder="email" type="email"/>
+    <button ng-click="model.update()" class="btn btn-primary btn-block">Update</button>
+    <br/>
+</div>

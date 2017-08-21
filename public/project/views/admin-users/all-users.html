@@ -1,0 +1,23 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/project">< Dashboard</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#!/gallery">Routes</a></li>
+            <li><a href="#!/explore">Explore</a></li>
+            <li><a href="#!/profile">Profile</a></li>
+            <li><a href ng-click="model.logout()">Log Out</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <ul class="list-group">
+        <div ng-repeat="user in model.users">
+            <li class="list-group-item">
+                <a href="#!/users/{{user._id}}">{{user.username}}</a>
+            </li>
+        </div>
+    </ul>
+</div>

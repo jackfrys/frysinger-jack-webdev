@@ -26,6 +26,9 @@ app.delete("/api/project/user", auth, deleteThisUser);
 app.get("/api/project/relationships", auth, relationships);
 app.post("/api/project/relationships/:rid", auth, newRelationship);
 
+app.put("/api/project/admin/user/:uid", auth, updateUser);
+app.delete("/api/project/admin/user/:uid", auth, deleteUser);
+
 app.delete("/api/project/relationships/:rid", deleteRelationship);
 app.get("/api/project/user/:un", findUn);
 
@@ -56,6 +59,26 @@ passport.use(new LocalStrategy(localStrategy));
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
+
+function deleteUser(req, res) {
+    if (req.user.role == "ADMIN") {
+        userModel.deleteUser(req.params.uid).then(function () {
+            res.send(200);
+        })
+    }
+
+    res.send(200);
+}
+
+function updateUser(req, res) {
+    if (req.user.role == "ADMIN") {
+        userModel.updateUser(req.params.uid, req.body).then(function () {
+            res.send(200);
+        })
+    }
+
+    res.send(200);
+}
 
 function googleStrategy(token, refreshToken, profile, done) {
     userModel
