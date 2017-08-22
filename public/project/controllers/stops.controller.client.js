@@ -3,7 +3,7 @@
         .module("MBTASafe")
         .controller("StopsController", StopsController);
 
-    function StopsController($http, $location) {
+    function StopsController($http, $location, MBTAService) {
         var vm = this;
         vm.submit = submit;
         vm.search = "";
@@ -11,7 +11,7 @@
         vm.logout = logout;
 
         function init() {
-            $http.get("/api/project/stops").then(function (resp) {
+            MBTAService.allStops().then(function (resp) {
                 vm.stops = resp.data;
             });
         }

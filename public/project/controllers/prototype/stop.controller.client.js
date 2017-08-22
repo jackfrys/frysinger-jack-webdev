@@ -3,10 +3,13 @@
         .module("MBTASafe")
         .controller("StopController", StopController);
 
-    function StopController($http, $routeParams) {
+    function StopController($routeParams, MBTAService) {
         var vm = this;
-        $http.get("/api/project/predictions/" + $routeParams["stopId"]).then(function (resp) {
-            vm.predictions = resp.data;
-        })
+        function init() {
+            MBTAService.predictions($routeParams["stopId"]).then(function (resp) {
+                vm.predictions = resp.data;
+            })
+        };
+        init();
     }
 })();
