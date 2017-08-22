@@ -22,7 +22,7 @@
         });
 
         function submit() {
-            $location.path(vm.search);
+            $location.path("/explore/" + vm.search);
         }
 
         function show(stop) {
