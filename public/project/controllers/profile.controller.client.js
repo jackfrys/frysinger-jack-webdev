@@ -3,12 +3,12 @@
         .module("MBTASafe")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($http, $location) {
+    function ProfileController($http, $location, UserService) {
         var vm = this;
         vm.update = update;
 
         function init() {
-            $http.get("/api/project/user/").then(function (u) {
+            UserService.thisUser().then(function (u) {
                 vm.user = u.data;
             });
         }
@@ -16,14 +16,14 @@
 
         vm.logout = logout;
         function logout() {
-            $http.get("/api/project/logout").then(function () {
+            UserService.logOut().then(function () {
                 vm.user = {role:"UNAUTH"};
                 $location.path("/");
             })
         }
         
         function update() {
-            $http.put("/api/project/user", vm.user).then(function () {
+            UserService.updateThisUser(vm.user).then(function () {
                 $location.path("/");
             })
         }

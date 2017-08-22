@@ -3,7 +3,7 @@
         .module("MBTASafe")
         .controller("RouteEditController", RouteEditController);
 
-    function RouteEditController($http, $routeParams, $location) {
+    function RouteEditController($http, $routeParams, $location, UserService) {
         var vm = this;
         var newR = $routeParams["rid"] == "new";
 
@@ -17,7 +17,7 @@
         vm.logout = logout;
 
         function logout() {
-            $http.get("/api/project/logout").then(function () {
+            UserService.logout().then(function () {
                 vm.user = {role:"UNAUTH"};
                 $location.path("/");
             })
@@ -32,7 +32,7 @@
                 });
             }
 
-            $http.get("/api/project/user").then(function (u) {
+            UserService.thisUser().then(function (u) {
                 vm.user = u.data;
             });
         }

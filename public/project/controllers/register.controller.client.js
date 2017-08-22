@@ -3,13 +3,13 @@
         .module("MBTASafe")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController($location, $http) {
+    function RegisterController($location, $http, UserService) {
         var vm = this;
         vm.register = register;
         vm.logout = logout;
 
         function logout() {
-            $http.get("/api/project/logout").then(function () {
+            UserService.logout().then(function () {
                 vm.user = {role:"UNAUTH"};
                 $location.path("/");
             })

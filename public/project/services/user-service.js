@@ -7,7 +7,11 @@
 
         var api = {
             allUsers: allUsers,
-            logout: logout
+            logout: logout,
+            logOut: logout,
+            updateUser: updateUser,
+            thisUser: thisUser,
+            updateThisUser: updateThisUser
         };
 
         return api;
@@ -23,5 +27,13 @@
         function updateUser(uid, user) {
             return $http.put("/api/project/admin/user/" + uid, user);
         }
+
+        function thisUser() {
+            return $http.get("/api/project/user/");
+        }
+
+        function updateThisUser(user) {
+            return $http.put("/api/project/user", user);
+        }
     }
-});
+})();

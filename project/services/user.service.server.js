@@ -56,7 +56,7 @@ app.get('/auth/google/callback',
 module.exports = auth;
 
 passport.use(new LocalStrategy(localStrategy));
-passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+// passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 

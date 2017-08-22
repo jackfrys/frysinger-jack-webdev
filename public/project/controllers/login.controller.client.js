@@ -11,7 +11,7 @@
         vm.logout = logout;
 
         function logout() {
-            $http.get("/api/project/logout").then(function () {
+            UserService.logOut().then(function () {
                 vm.user = {role:"UNAUTH"};
                 $location.path("/");
             })
