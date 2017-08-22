@@ -7,9 +7,12 @@
         var vm = this;
         vm.update = update;
 
-        $http.get("/api/project/user/").then(function (u) {
-            vm.user = u.data;
-        });
+        function init() {
+            $http.get("/api/project/user/").then(function (u) {
+                vm.user = u.data;
+            });
+        }
+        init();
 
         vm.logout = logout;
         function logout() {

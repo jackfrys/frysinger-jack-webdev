@@ -8,8 +8,8 @@
 
         vm.user = {};
         vm.login = login;
-
         vm.logout = logout;
+
         function logout() {
             $http.get("/api/project/logout").then(function () {
                 vm.user = {role:"UNAUTH"};

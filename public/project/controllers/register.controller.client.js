@@ -6,8 +6,8 @@
     function RegisterController($location, $http) {
         var vm = this;
         vm.register = register;
-
         vm.logout = logout;
+
         function logout() {
             $http.get("/api/project/logout").then(function () {
                 vm.user = {role:"UNAUTH"};

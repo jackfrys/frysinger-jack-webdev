@@ -5,6 +5,7 @@
 
     function RouteGalleryController($http, $location) {
         var vm = this;
+        vm.logout = logout;
 
         $http.get("/api/project/publicroutes").then(function (rs) {
             vm.routes = rs.data;
@@ -18,7 +19,6 @@
             }
         });
 
-        vm.logout = logout;
         function logout() {
             $http.get("/api/project/logout").then(function () {
                 vm.user = {role:"UNAUTH"};

@@ -15,6 +15,7 @@
         vm.stations = ["hi", "bye"];
 
         vm.logout = logout;
+
         function logout() {
             $http.get("/api/project/logout").then(function () {
                 vm.user = {role:"UNAUTH"};
@@ -22,17 +23,20 @@
             })
         }
 
-        if (newR) {
-            vm.route = {steps: [{}, {}]};
-        } else {
-            $http.get("/api/project/route/" + $routeParams["rid"]).then(function (route) {
-                vm.route = route.data;
+        function init() {
+            if (newR) {
+                vm.route = {steps: [{}, {}]};
+            } else {
+                $http.get("/api/project/route/" + $routeParams["rid"]).then(function (route) {
+                    vm.route = route.data;
+                });
+            }
+
+            $http.get("/api/project/user").then(function (u) {
+                vm.user = u.data;
             });
         }
-
-        $http.get("/api/project/user").then(function (u) {
-            vm.user = u.data;
-        });
+        init();
 
         function editRoute() {
             if (newR) {
