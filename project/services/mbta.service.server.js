@@ -1,11 +1,16 @@
 var app = require("../../express");
 var request = require('request');
 
+var mbta_key = process.env.MBTA_KEY;
+if (!mbta_key) {
+    mbta_key = "wX9NwuHnZU2ToO7GmGR9uw";
+}
+
 app.get("/api/project/stops", allStops);
 app.get("/api/project/predictions/:stopId", predictions);
 
 function allStops(req, res) {
-    request("http://realtime.mbta.com/developer/api/v2/routes?api_key=wX9NwuHnZU2ToO7GmGR9uw&format=json", function (err, result, body) {
+    request("http://realtime.mbta.com/developer/api/v2/routes?api_key=" + mbta_key + "&format=json", function (err, result, body) {
         var j = JSON.parse(body);
         var routes = [];
         for (m in j.mode) {
@@ -36,7 +41,7 @@ function stopsForAllRoutes(stops, routesRemaining, callback) {
 }
 
 function stopsForRoute(routeId, stops, callback) {
-    request("http://realtime.mbta.com/developer/api/v2/stopsbyroute?api_key=wX9NwuHnZU2ToO7GmGR9uw&route=" + routeId + "&format=json", function (err, result, body) {
+    request("http://realtime.mbta.com/developer/api/v2/stopsbyroute?api_key=" + mbta_key + "&route=" + routeId + "&format=json", function (err, result, body) {
         var j = JSON.parse(body);
         for (var s in j.direction[0].stop) {
             var ss = j.direction[0].stop[s];
@@ -55,7 +60,7 @@ function stopsForRoute(routeId, stops, callback) {
 
 function predictions(req, res) {
     var stopId = req.params.stopId;
-    request("http://realtime.mbta.com/developer/api/v2/predictionsbystop?api_key=wX9NwuHnZU2ToO7GmGR9uw&stop=" + stopId + "&format=json", function (err, result, body) {
+    request("http://realtime.mbta.com/developer/api/v2/predictionsbystop?api_key=" + mbta_key + "&stop=" + stopId + "&format=json", function (err, result, body) {
         var trips = [];
         var j = JSON.parse(body);
         for (var m in j.mode) {
