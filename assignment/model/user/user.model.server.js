@@ -11,7 +11,7 @@ userModel.deleteUser = deleteUser;
 module.exports = userModel;
 
 function createUser(user) {
-    return userModel.create({username:user.username, password:user.password});
+    return userModel.create({username: user.username, password: user.password});
 }
 
 function findUserById(userId) {
@@ -19,15 +19,15 @@ function findUserById(userId) {
 }
 
 function findUserByUsername(username) {
-    return userModel.findOne({username:username});
+    return userModel.findOne({username: username});
 }
 
 function findUserByCredentials(username, password) {
-    return userModel.findOne({username:username, password:password});
+    return userModel.findOne({username: username, password: password});
 }
 
 function updateUser(userId, user) {
-    return userModel.update({_id:userId}, {$set:user});
+    return userModel.update({_id: userId}, {$set: user});
 }
 
 function deleteUser(userId) {

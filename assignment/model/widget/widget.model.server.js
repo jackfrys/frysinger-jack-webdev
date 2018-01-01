@@ -25,11 +25,11 @@ function findWidgetById(widgetId) {
 }
 
 function updateWidget(widgetId, widget) {
-    return widgetModel.findOneAndUpdate({_id:widgetId}, {$set:widget});
+    return widgetModel.findOneAndUpdate({_id: widgetId}, {$set: widget});
 }
 
 function deleteWidget(widgetId) {
-    return widgetModel.findOneAndRemove({_id:widgetId});
+    return widgetModel.findOneAndRemove({_id: widgetId});
 }
 
 function reorderWidget(pageId, start, end) {

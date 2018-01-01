@@ -16,7 +16,7 @@ function createPage(websiteId, page) {
 }
 
 function findAllPagesForWebsite(websiteId) {
-    return pageModel.find({websiteId:mongoose.Schema.Types.ObjectId(websiteId)});
+    return pageModel.find({websiteId: mongoose.Schema.Types.ObjectId(websiteId)});
 }
 
 function findPageById(pageId) {
@@ -24,9 +24,9 @@ function findPageById(pageId) {
 }
 
 function updatePage(pageId, page) {
-    return pageModel.findOneAndUpdate({_id:pageId}, {$set:page});
+    return pageModel.findOneAndUpdate({_id: pageId}, {$set: page});
 }
 
 function deletePage(pageId) {
-    return pageModel.findOneAndRemove({_id:pageId});
+    return pageModel.findOneAndRemove({_id: pageId});
 }
