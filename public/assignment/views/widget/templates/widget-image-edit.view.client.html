@@ -1,27 +1,28 @@
 <form action="/api/upload" method="post" enctype="multipart/form-data">
-<label for="pageName">Name</label>
-<input ng-model="model.widget.name" class="form-control" placeholder="Page Name" name="pageName"
-id="pageName"/>
-<label for="text">Text</label>
-<input class="form-control" placeholder="Text" name="text" id="text"/>
-<label for="url">URL</label>
-<input ng-model="model.widget.url" class="form-control" type="url" placeholder="URL" name="url" id="url"/>
-<input name="myFile" type="file" class="form-control"/>
-<input name="width" value="{{model.widget.width}}" style="display: none"/>
-<input name="userId" value="{{model.userId}}" style="display: none"/>
-<input name="websiteId" value="{{model.websiteId}}" style="display: none"/>
-<input name="pageId" value="{{model.pageId}}" style="display: none"/>
-<input name="widgetId" value="{{model.widget._id}}" style="display: none"/>
-    <a class="btn btn-block btn-primary" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widget._id}}/flickr">Flickr</a>
-<button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+    <label for="pageName">Name</label>
+    <input ng-model="model.widget.name" class="form-control" placeholder="Page Name" name="pageName"
+           id="pageName"/>
+    <label for="text">Text</label>
+    <input class="form-control" placeholder="Text" name="text" id="text"/>
+    <label for="url">URL</label>
+    <input ng-model="model.widget.url" class="form-control" type="url" placeholder="URL" name="url" id="url"/>
+    <input name="myFile" type="file" class="form-control"/>
+    <input name="width" value="{{model.widget.width}}" style="display: none"/>
+    <input name="userId" value="{{model.userId}}" style="display: none"/>
+    <input name="websiteId" value="{{model.websiteId}}" style="display: none"/>
+    <input name="pageId" value="{{model.pageId}}" style="display: none"/>
+    <input name="widgetId" value="{{model.widget._id}}" style="display: none"/>
+    <a class="btn btn-block btn-primary"
+       href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widget._id}}/flickr">Flickr</a>
+    <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
 </form>
 
 <!--<form action="/api/upload"   method="post" enctype="multipart/form-data">-->
-    <!--<input  name="myFile"    type="file" class="form-control"/>-->
-    <!--<input  name="width"     value="{{model.widget.width}}" style="display: none"/>-->
-    <!--<input  name="userId"    value="{{model.userId}}"   style="display: none"/>-->
-    <!--<input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>-->
-    <!--<input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>-->
-    <!--<input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>-->
-    <!--<button type="submit"    class="btn btn-block btn-primary">Upload Image</button>-->
+<!--<input  name="myFile"    type="file" class="form-control"/>-->
+<!--<input  name="width"     value="{{model.widget.width}}" style="display: none"/>-->
+<!--<input  name="userId"    value="{{model.userId}}"   style="display: none"/>-->
+<!--<input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>-->
+<!--<input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>-->
+<!--<input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>-->
+<!--<button type="submit"    class="btn btn-block btn-primary">Upload Image</button>-->
 <!--</form>-->

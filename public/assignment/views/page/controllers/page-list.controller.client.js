@@ -7,11 +7,13 @@
         var vm = this;
         vm.userId = $routeParams["uid"];
         vm.websiteId = $routeParams["wid"];
+
         function init() {
             PageService.findPageByWebsiteId(vm.websiteId).then(function (pages) {
                 vm.pages = pages.data;
             });
         }
+
         init();
     }
 })();

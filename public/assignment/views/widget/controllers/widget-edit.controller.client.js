@@ -19,6 +19,7 @@
                 vm.widget = widget.data;
             });
         }
+
         init();
 
         function saveChanges() {

@@ -13,11 +13,12 @@
                 vm.users = us.data;
             })
         }
+
         init();
 
         function logout() {
             UserService.logout().then(function () {
-                vm.user = {role:"UNAUTH"};
+                vm.user = {role: "UNAUTH"};
                 $location.path("/");
             })
         }

@@ -28,7 +28,8 @@
                     <tbody>
                     <tr ng-repeat="rel in model.rels">
                         <td>{{rel.username}}</td>
-                        <td><a class="btn btn-danger pull-right" href="#!/route/follow/{{rel.traveler}}">View Active Route</a></td>
+                        <td><a class="btn btn-danger pull-right" href="#!/route/follow/{{rel.traveler}}">View Active
+                            Route</a></td>
                         <td><a class="btn btn-danger pull-right" ng-click="model.deleteRel(rel)">Delete</a></td>
                     </tr>
                     </tbody>
@@ -37,7 +38,9 @@
         </div>
 
         <div ng-switch-when="UNAUTH">
-            Parents can use MBTA Safe Arrival to connect with the little travelers in their lives. We present them with an easy-to-follow route plans of your creation, and we report back on their progress as they complete their journey.
+            Parents can use MBTA Safe Arrival to connect with the little travelers in their lives. We present them with
+            an easy-to-follow route plans of your creation, and we report back on their progress as they complete their
+            journey.
         </div>
 
         <div ng-switch-when="ADMIN">
@@ -52,7 +55,9 @@
                     <tr ng-repeat="rel in model.rels">
                         <td>{{rel.parentName}}</td>
                         <td>{{rel.username}}</td>
-                        <td><button class="btn btn-primary" ng-click="model.deleteRel(rel)">Delete</button></td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="model.deleteRel(rel)">Delete</button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

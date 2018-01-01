@@ -19,6 +19,7 @@
                 vm.widgets = widgets.data;
             });
         }
+
         init();
 
         function trustImageUrl(url) {
@@ -32,7 +33,7 @@
         function trustYoutube(url) {
             var youtubeUrl = "https://www.youtube.com/embed/";
             var urlParts = url.split("/");
-            youtubeUrl += urlParts[urlParts.length-1];
+            youtubeUrl += urlParts[urlParts.length - 1];
             return $sce.trustAsResourceUrl(youtubeUrl);
         }
     }

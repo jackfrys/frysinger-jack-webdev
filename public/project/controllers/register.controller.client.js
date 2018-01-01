@@ -1,4 +1,4 @@
-(function() {
+(function () {
     angular
         .module("MBTASafe")
         .controller("RegisterController", RegisterController);
@@ -10,26 +10,26 @@
 
         function logout() {
             UserService.logout().then(function () {
-                vm.user = {role:"UNAUTH"};
+                vm.user = {role: "UNAUTH"};
                 $location.path("/");
             })
         }
 
         function register(user, role) {
-            if(user.password != user.password2 || !user.password || !user.password2) {
+            if (user.password != user.password2 || !user.password || !user.password2) {
                 vm.error = "Your passwords don't match";
             } else {
                 user.role = role;
                 $http.post("/api/project/register", user)
                     .then(
-                        function(response) {
+                        function (response) {
                             var user = response.data;
-                            if(user != null) {
+                            if (user != null) {
                                 vm.currentUser = user;
                                 $location.url("/");
                             }
                         },
-                        function(err) {
+                        function (err) {
                             vm.error = err;
                         }
                     );

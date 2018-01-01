@@ -93,8 +93,7 @@ body {
     z-index: -1;
 }
 
-a:hover, a:visited, a:link, a:active
-{
+a:hover, a:visited, a:link, a:active {
     text-decoration: none;
 }
 
@@ -103,6 +102,7 @@ a:hover, a:visited, a:link, a:active
     padding-bottom: 56.25%; /* 16:9 */
     height: 0;
 }
+
 .youtube-widget iframe {
     position: absolute;
     top: 0;

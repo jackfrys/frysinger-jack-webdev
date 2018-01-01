@@ -14,7 +14,7 @@
             $http.get("/api/project/user").then(function (u) {
                 vm.user = u.data;
             }, function () {
-                vm.user = {role:"UNAUTH"};
+                vm.user = {role: "UNAUTH"};
             });
 
             $http.get("/api/project/routes").then(function (rs) {
@@ -32,6 +32,7 @@
                 }
             });
         }
+
         init();
 
         function markActive(route) {
@@ -48,7 +49,7 @@
 
         function logout() {
             $http.get("/api/project/logout").then(function () {
-                vm.user = {role:"UNAUTH"};
+                vm.user = {role: "UNAUTH"};
                 $location.path("/");
             })
         }

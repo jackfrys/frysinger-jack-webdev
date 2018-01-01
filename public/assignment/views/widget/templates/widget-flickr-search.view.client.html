@@ -2,7 +2,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-10 pull-left">
-                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}" class="navbar-brand">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}"
+                   class="navbar-brand">
                     <div class="jcf-navbar-text"><span class="glyphicon glyphicon-menu-left"></span> Edit</div>
                 </a>
             </div>
@@ -15,14 +16,14 @@
 </nav>
 
 <div class="container-fluid">
-<div class="input-group">
-    <input ng-model="searchText" type="text" class="form-control">
-    <span class="input-group-btn">
+    <div class="input-group">
+        <input ng-model="searchText" type="text" class="form-control">
+        <span class="input-group-btn">
         <a ng-click="model.searchPhotos(searchText)" class="btn btn-default" type="button">
             <span class="glyphicon glyphicon-search"></span>
         </a>
     </span>
-</div>
+    </div>
 </div>
 
 <div class="row">

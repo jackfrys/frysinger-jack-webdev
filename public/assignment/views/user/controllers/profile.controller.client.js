@@ -7,11 +7,13 @@
         var vm = this;
         this.updateProfile = updateProfile;
         vm.userId = $routeParams["uid"];
+
         function init() {
             UserService.findUserById(vm.userId).then(function (user) {
                 vm.user = user.data;
             });
         }
+
         init();
 
         function updateProfile() {

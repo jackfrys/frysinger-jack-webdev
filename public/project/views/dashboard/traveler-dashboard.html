@@ -11,7 +11,10 @@
         <tr ng-repeat="step in model.user.activeRoute.steps">
             <td>{{step.action}} at {{step.place}}</td>
             <td><span ng-if="step.completed">Yes</span><span ng-if="!step.completed">-</span></td>
-            <td><button class="btn btn-primary" ng-click="model.markComplete(step)"><span ng-if="step.completed">Undo</span><span ng-if="!step.completed">Mark Completed</span></button></td>
+            <td>
+                <button class="btn btn-primary" ng-click="model.markComplete(step)"><span
+                        ng-if="step.completed">Undo</span><span ng-if="!step.completed">Mark Completed</span></button>
+            </td>
         </tr>
         </tbody>
     </table>

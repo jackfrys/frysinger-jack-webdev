@@ -2,16 +2,16 @@
     angular
         .module("WebAppMaker")
         .service("UserService", UserService);
-    
+
     function UserService($http) {
 
         var api = {
-            "createUser" : createUser,
-            "findUserById" : findUserById,
-            "findUserByUsername" : findUserByUsername,
-            "findUserByCredentials" : findUserByCredentials,
-            "updateUser" : updateUser,
-            "deleteUser" : deleteUser
+            "createUser": createUser,
+            "findUserById": findUserById,
+            "findUserByUsername": findUserByUsername,
+            "findUserByCredentials": findUserByCredentials,
+            "updateUser": updateUser,
+            "deleteUser": deleteUser
         };
 
         return api;
@@ -20,7 +20,7 @@
             var url = "/api/user";
             return $http.post(url, user);
         }
-        
+
         function findUserById(userId) {
             var url = "/api/user/" + userId;
             return $http.get(url);
@@ -35,12 +35,12 @@
             var url = "/api/user?username=" + username + "&password=" + password;
             return $http.get(url);
         }
-        
+
         function updateUser(userId, user) {
             var url = "/api/user/" + userId;
             $http.put(url, user);
         }
-        
+
         function deleteUser(userId) {
             var url = "/api/user/" + userId;
             $http.delete(url);

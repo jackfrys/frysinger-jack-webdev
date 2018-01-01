@@ -18,7 +18,7 @@
 
         function logout() {
             UserService.logout().then(function () {
-                vm.user = {role:"UNAUTH"};
+                vm.user = {role: "UNAUTH"};
                 $location.path("/");
             })
         }
@@ -36,6 +36,7 @@
                 vm.user = u.data;
             });
         }
+
         init();
 
         function editRoute() {

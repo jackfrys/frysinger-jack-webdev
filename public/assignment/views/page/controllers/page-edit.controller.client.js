@@ -10,11 +10,13 @@
         vm.pageId = $routeParams["pid"];
         vm.userId = $routeParams["uid"];
         vm.websiteId = $routeParams["wid"];
+
         function init() {
             PageService.findPageById(vm.pageId).then(function (page) {
                 vm.page = page.data;
             });
         }
+
         init();
 
         function deletePage() {

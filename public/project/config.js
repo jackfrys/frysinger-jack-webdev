@@ -60,7 +60,7 @@
                 controller: "AdminUsers",
                 controllerAs: "model"
             })
-            .when("/users/:uid" ,{
+            .when("/users/:uid", {
                 templateUrl: "views/admin-users/admin-one-user.html",
                 controller: "AdminOneUser",
                 controllerAs: "model"

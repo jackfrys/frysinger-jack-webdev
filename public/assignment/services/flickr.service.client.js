@@ -8,7 +8,7 @@
         var secret = "18b9ebe6513c06e2";
         var urlBase = "https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=API_KEY&text=TEXT";
 
-        var api = {"searchPhotos" : searchPhotos};
+        var api = {"searchPhotos": searchPhotos};
         return api;
 
         function searchPhotos(searchTerm) {

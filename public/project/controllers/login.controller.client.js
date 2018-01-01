@@ -12,7 +12,7 @@
 
         function logout() {
             UserService.logOut().then(function () {
-                vm.user = {role:"UNAUTH"};
+                vm.user = {role: "UNAUTH"};
                 $location.path("/");
             })
         }
