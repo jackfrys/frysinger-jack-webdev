@@ -5,9 +5,9 @@ var app = require("../../express");
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 var googleConfig = {
-    clientID     : process.env.GOOGLE_CLIENT_ID,
-    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL  : process.env.GOOGLE_CALLBACK_URL
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: process.env.GOOGLE_CALLBACK_URL
 };
 
 var userModel = require("../model/user/user.model.server");
@@ -45,7 +45,7 @@ app.get("/api/project/rels", function (req, res) {
 
 app.get("/api/project/createAdmin", createAdmin);
 
-app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+app.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
 
 app.get('/auth/google/callback',
     passport.authenticate('google', {
@@ -84,41 +84,45 @@ function googleStrategy(token, refreshToken, profile, done) {
     userModel
         .findUserByGoogleId(profile.id)
         .then(
-            function(user) {
-                if(user) {
+            function (user) {
+                if (user) {
                     return done(null, user);
                 } else {
                     var email = profile.emails[0].value;
                     var emailParts = email.split("@");
                     var newGoogleUser = {
-                        username:  emailParts[0],
+                        username: emailParts[0],
                         firstName: profile.name.givenName,
-                        lastName:  profile.name.familyName,
-                        email:     email,
+                        lastName: profile.name.familyName,
+                        email: email,
                         google: {
-                            id:    profile.id,
+                            id: profile.id,
                             token: token
                         }
                     };
                     return userModel.createUser(newGoogleUser);
                 }
             },
-            function(err) {
-                if (err) { return done(err); }
+            function (err) {
+                if (err) {
+                    return done(err);
+                }
             }
         )
         .then(
-            function(user){
+            function (user) {
                 return done(null, user);
             },
-            function(err){
-                if (err) { return done(err); }
+            function (err) {
+                if (err) {
+                    return done(err);
+                }
             }
         );
 }
 
 function createAdmin(req, res) {
-    userModel.createUser({username:req.query.username, password:req.query.password, role:"ADMIN"}).then(function () {
+    userModel.createUser({username: req.query.username, password: req.query.password, role: "ADMIN"}).then(function () {
         res.send(200);
     });
 }

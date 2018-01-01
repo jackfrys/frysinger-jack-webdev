@@ -16,7 +16,7 @@ userModel.allUsers = allUsers;
 module.exports = userModel;
 
 function findUserByGoogleId(googleId) {
-    return userModel.find({google:{id:googleId}});
+    return userModel.find({google: {id: googleId}});
 }
 
 function allUsers() {
@@ -24,7 +24,7 @@ function allUsers() {
 }
 
 function createUser(user) {
-    return userModel.create({username:user.username, password:user.password, role:user.role});
+    return userModel.create({username: user.username, password: user.password, role: user.role});
 }
 
 function findUserById(userId) {
@@ -32,15 +32,15 @@ function findUserById(userId) {
 }
 
 function findUserByUsername(username) {
-    return userModel.findOne({username:username});
+    return userModel.findOne({username: username});
 }
 
 function findUserByCredentials(username, password) {
-    return userModel.findOne({username:username, password:password});
+    return userModel.findOne({username: username, password: password});
 }
 
 function updateUser(userId, user) {
-    return userModel.update({_id:userId}, {$set:user});
+    return userModel.update({_id: userId}, {$set: user});
 }
 
 function deleteUser(userId) {
@@ -52,5 +52,5 @@ function relationships(userId) {
 }
 
 function activeRoute(userId, route) {
-    return userModel.findByIdAndUpdate(userId, {$set:{activeRoute:route}});
+    return userModel.findByIdAndUpdate(userId, {$set: {activeRoute: route}});
 }

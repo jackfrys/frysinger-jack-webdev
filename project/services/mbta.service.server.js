@@ -14,7 +14,7 @@ function allStops(req, res) {
         var j = JSON.parse(body);
         var routes = [];
         for (m in j.mode) {
-            var mode  = j.mode[m];
+            var mode = j.mode[m];
             if (mode.mode_name == "Subway") {
                 for (var r in mode.route) {
                     var route = mode.route[r];
@@ -45,12 +45,12 @@ function stopsForRoute(routeId, stops, callback) {
         var j = JSON.parse(body);
         for (var s in j.direction[0].stop) {
             var ss = j.direction[0].stop[s];
-            stops.push({name:ss["parent_station_name"], code:ss["parent_station"]});
+            stops.push({name: ss["parent_station_name"], code: ss["parent_station"]});
             // stops[ss["parent_station_name"]] = ss["parent_station"];
         }
         for (var s in j.direction[1].stop) {
             var ss = j.direction[1].stop[s];
-            stops.push({name:ss["parent_station_name"], code:ss["parent_station"]});
+            stops.push({name: ss["parent_station_name"], code: ss["parent_station"]});
             // stops[ss["parent_station_name"]] = ss["parent_station"];
         }
 

@@ -14,7 +14,7 @@ routeModel.allRoutes = allRoutes;
 routeModel.publicRoutes = publicRoutes;
 
 function publicRoutes() {
-    return routeModel.find({public:true});
+    return routeModel.find({public: true});
 }
 
 function routesForParent(parentId) {
@@ -30,7 +30,7 @@ function route(routeId) {
 }
 
 function updateRoute(routeId, route) {
-    return routeModel.findByIdAndUpdate(routeId, {$set:route});
+    return routeModel.findByIdAndUpdate(routeId, {$set: route});
 }
 
 function deleteRoute(routeId) {
