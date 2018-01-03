@@ -6,6 +6,6 @@ This repository will include the source code for my work in CS 4550 Web Developm
 
 My site is hosted on [Heroku](http://webdev.jackfrysinger.com).
 
-My [project](http://webdev.jackfrysinger.com/project/index.html) home page.
+My [project](http://webdev.jackfrysinger.com/project) home page.
 
-My [assignment](http://webdev.jackfrysinger.com/assignment/) home page.
+My [assignment](http://webdev.jackfrysinger.com/assignment) home page.
